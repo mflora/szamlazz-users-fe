@@ -62,7 +62,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-4c6d758d4b807e37c5ae91cd84175485febbfed5ab66ecbcc071611521101652cc53660b3611e1afdf9431f5ca85c3f517b098a0f86cf4696934420288235b60",
+            "id": "component-ButtonComponent-e57f6affb0755fb64ab8eaa79f27c0c5c2bba012364c101bee6cb52b5980b44c1ec35e337254ce6b9cf771f42bb6e8119c66527bfbfc9b6193881e14ea4cda5d",
             "file": "src/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -85,7 +85,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe color schema of the button\n",
                     "description": "<p>The color schema of the button</p>\n",
-                    "line": 41,
+                    "line": 40,
                     "type": "\"primary\" | \"secondary\" | \"secondary-ghost\"",
                     "decorators": []
                 },
@@ -96,7 +96,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nName of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\n",
                     "description": "<p>Name of the FontAwesomeIcon you can find the icons here: <a href=\"https://fontawesome.com/icons\">https://fontawesome.com/icons</a></p>\n",
-                    "line": 35,
+                    "line": 34,
                     "type": "IconDefinition | null",
                     "decorators": []
                 },
@@ -107,7 +107,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThis string will appear as the button's label. If empty, an icon button will appear.\n",
                     "description": "<p>This string will appear as the button&#39;s label. If empty, an icon button will appear.</p>\n",
-                    "line": 23,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 }
@@ -120,7 +120,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nClick event for the button.\n",
                     "description": "<p>Click event for the button.</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "EventEmitter"
                 }
             ],
@@ -146,7 +146,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faDragon, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {IconProp} from \"@fortawesome/fontawesome-svg-core\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    NgClass,\r\n    FaIconComponent,\r\n    NgIf\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * This string will appear as the button's label. If empty, an icon button will appear.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n\r\n  /**\r\n   * Click event for the button.\r\n   * */\r\n  @Output()\r\n  onClick = new EventEmitter();\r\n\r\n  /**\r\n   * Name of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\r\n   * */\r\n  @Input()\r\n  iconName:IconDefinition | null = null;\r\n\r\n  /**\r\n   * The color schema of the button\r\n   */\r\n  @Input()\r\n  buttonType: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport { IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    NgClass,\r\n    FaIconComponent,\r\n    NgIf\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * This string will appear as the button's label. If empty, an icon button will appear.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n\r\n  /**\r\n   * Click event for the button.\r\n   * */\r\n  @Output()\r\n  onClick = new EventEmitter();\r\n\r\n  /**\r\n   * Name of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\r\n   * */\r\n  @Input()\r\n  iconName:IconDefinition | null = null;\r\n\r\n  /**\r\n   * The color schema of the button\r\n   */\r\n  @Input()\r\n  buttonType: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'\r\n\r\n\r\n}\r\n",
             "styleUrl": "./button.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -156,7 +156,7 @@
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-e1e1bec109c000fe10cb9b4f2df4e3e874d2a7654202f12a56f5929b0ab82f63a780dbbb76a4b5e4a6f4d3ee59faa67d54a7fc549c1b8f6d7b9761b84bee3ffd",
+            "id": "component-TableComponent-3516db354fff3bbcb3b7d5154844c0080f6243e7ecf570dae2db6aff8b3df9d4f3756f9376084ad6b557312b105af631376e4a7730d87020574f4cc9543cf5f0",
             "file": "src/components/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -218,6 +218,16 @@
                     "line": 29
                 },
                 {
+                    "name": "isBoolean",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
                     "name": "Object",
                     "defaultValue": "Object",
                     "deprecated": false,
@@ -225,7 +235,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 39,
+                    "line": 41,
                     "modifierKind": [
                         124,
                         148
@@ -262,7 +272,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\r\nimport {IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule, NgIf} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnInit{\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  headers: Array<string>= [];\r\n\r\n  ngOnInit() {\r\n    this.headers = this.getHeaders();\r\n  }\r\n\r\n  getHeaders = () => {\r\n    return Object.keys(this.data[0]);\r\n  }\r\n\r\n  protected readonly Object = Object;\r\n}\r\n",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\r\nimport {IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnInit{\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  headers: Array<string>= [];\r\n\r\n  ngOnInit() {\r\n    this.headers = this.getHeaders();\r\n  }\r\n\r\n  getHeaders = () => {\r\n    return Object.keys(this.data[0]);\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  protected readonly Object = Object;\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -271,7 +281,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<table>\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\"> Műveletek</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let row of data\">\r\n      <td *ngFor=\"let cell of Object.values(row)\">{{ cell }}</td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\"/>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n"
+            "templateData": "<table>\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\"> Műveletek</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let row of data\">\r\n      <td *ngFor=\"let cell of Object.values(row)\">\r\n        <ng-container *ngIf=\"isBoolean(cell); then checkbox; else text;\">{{ cell }}</ng-container>\r\n        <ng-template #checkbox><input type=\"checkbox\"></ng-template>\r\n        <ng-template #text>{{cell}}</ng-template>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\"/>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n"
         }
     ],
     "modules": [],
@@ -311,7 +321,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 27,
+        "count": 26,
         "status": "medium",
         "files": [
             {
@@ -347,9 +357,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TableComponent",
-                "coveragePercent": 28,
-                "coverageCount": "2/7",
-                "status": "medium"
+                "coveragePercent": 25,
+                "coverageCount": "2/8",
+                "status": "low"
             }
         ]
     }

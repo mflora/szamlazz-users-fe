@@ -36,5 +36,7 @@ export class TableComponent implements OnInit{
     return Object.keys(this.data[0]);
   }
 
+  isBoolean = (value: any) =>  {return typeof value === 'boolean'}
+
   protected readonly Object = Object;
 }
