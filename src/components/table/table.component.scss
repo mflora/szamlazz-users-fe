@@ -1,0 +1,38 @@
+tbody tr{
+  border-bottom: 6px solid #fff;
+  &:hover td{
+    background: #eff4fd;
+
+  }
+  &:nth-child(even) {
+    background: #f2f3f7;
+  }
+
+  &:nth-child(odd) {
+    background: #FAFAFA;
+  }
+
+}
+
+ table {
+   border-spacing: 0 6px;
+   font-family: 'Open Sans', sans-serif;
+   font-size: 12px;
+ }
+
+ tr td {
+   height: 12px;
+   padding: 11px 14px;
+   color: #444;
+   text-align: center;
+ }
+
+ thead tr th {
+   height: 34px;
+   font-style: italic;
+   color: #444;
+   text-align: center;
+   padding: 11px 14px;
+   background: #f2f3f7;
+   font-weight: normal;
+ }

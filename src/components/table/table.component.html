@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers"> {{ header }}</th>
+      <th *ngIf="actionButtons" [colSpan]="actionButtons.length"> Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let cell of Object.values(row)">{{ cell }}</td>
+      <td *ngFor="let action of actionButtons">
+        <app-button [iconName]="action"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

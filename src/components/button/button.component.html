@@ -1,0 +1,8 @@
+<button (click)="onClick.emit()"
+        class="btn-container"
+        [ngClass]="[label ? buttonType : 'icon-button']"
+>
+  <fa-icon *ngIf="iconName !== null" [icon]="iconName" class="icon"></fa-icon>{{label}}
+</button>
+
+
