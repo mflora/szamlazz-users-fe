@@ -62,7 +62,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-e57f6affb0755fb64ab8eaa79f27c0c5c2bba012364c101bee6cb52b5980b44c1ec35e337254ce6b9cf771f42bb6e8119c66527bfbfc9b6193881e14ea4cda5d",
+            "id": "component-ButtonComponent-fdd79dd599e2479f9a3765cc6bde63f9e08a4d49794d2582f5ea9c4644ff06a83db7b9b438bc851d7f4455f50b342f6b5f0f1ebad67e47da9dbe51831f9e801b",
             "file": "src/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -87,6 +87,15 @@
                     "description": "<p>The color schema of the button</p>\n",
                     "line": 40,
                     "type": "\"primary\" | \"secondary\" | \"secondary-ghost\"",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -146,17 +155,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport { IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    NgClass,\r\n    FaIconComponent,\r\n    NgIf\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * This string will appear as the button's label. If empty, an icon button will appear.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n\r\n  /**\r\n   * Click event for the button.\r\n   * */\r\n  @Output()\r\n  onClick = new EventEmitter();\r\n\r\n  /**\r\n   * Name of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\r\n   * */\r\n  @Input()\r\n  iconName:IconDefinition | null = null;\r\n\r\n  /**\r\n   * The color schema of the button\r\n   */\r\n  @Input()\r\n  buttonType: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport { IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    NgClass,\r\n    FaIconComponent,\r\n    NgIf\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * This string will appear as the button's label. If empty, an icon button will appear.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n\r\n  /**\r\n   * Click event for the button.\r\n   * */\r\n  @Output()\r\n  onClick = new EventEmitter();\r\n\r\n  /**\r\n   * Name of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\r\n   * */\r\n  @Input()\r\n  iconName:IconDefinition | null = null;\r\n\r\n  /**\r\n   * The color schema of the button\r\n   */\r\n  @Input()\r\n  buttonType: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'\r\n\r\n  @Input()\r\n  disabled = false;\r\n\r\n\r\n}\r\n",
             "styleUrl": "./button.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<button (click)=\"onClick.emit()\"\r\n        class=\"btn-container\"\r\n        [ngClass]=\"[label ? buttonType : 'icon-button']\"\r\n>\r\n  <fa-icon *ngIf=\"iconName !== null\" [icon]=\"iconName\" class=\"icon\"></fa-icon>{{label}}\r\n</button>\r\n\r\n\r\n"
+            "templateData": "<button (click)=\"onClick.emit()\"\r\n        class=\"btn-container\"\r\n        [ngClass]=\"[label ? buttonType : 'icon-button']\"\r\n        [disabled]=\"disabled\"\r\n>\r\n  <fa-icon *ngIf=\"iconName !== null\" [icon]=\"iconName\" class=\"icon\"></fa-icon>{{label}}\r\n</button>\r\n\r\n\r\n"
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-3516db354fff3bbcb3b7d5154844c0080f6243e7ecf570dae2db6aff8b3df9d4f3756f9376084ad6b557312b105af631376e4a7730d87020574f4cc9543cf5f0",
+            "id": "component-TableComponent-5003c7fcc034e4ed25f0e503c1ab1447189c64ccce203701a022a7cdf8d2e15a654d94a8dcf6781f21871d7ef54b2212acf12a014129aeacd99e514b626852f2",
             "file": "src/components/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -179,7 +188,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nArray of the buttons needed for the table actions.\n",
                     "description": "<p>Array of the buttons needed for the table actions.</p>\n",
-                    "line": 27,
+                    "line": 30,
                     "type": "Array<IconDefinition> | null",
                     "decorators": []
                 },
@@ -190,13 +199,69 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe data of the table\n",
                     "description": "<p>The data of the table</p>\n",
-                    "line": 21,
+                    "line": 24,
                     "type": "Array<object>",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [
+                {
+                    "name": "faChevronLeft",
+                    "defaultValue": "faChevronLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "faChevronRight",
+                    "defaultValue": "faChevronRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "faFaceSadCry",
+                    "defaultValue": "faFaceSadCry",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "faPlus",
+                    "defaultValue": "faPlus",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
                 {
                     "name": "getHeaders",
                     "defaultValue": "() => {...}",
@@ -205,7 +270,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 40
                 },
                 {
                     "name": "headers",
@@ -215,7 +280,7 @@
                     "type": "Array<string>",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 32
                 },
                 {
                     "name": "isBoolean",
@@ -225,7 +290,21 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 44
+                },
+                {
+                    "name": "Math",
+                    "defaultValue": "Math",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 62,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
                 },
                 {
                     "name": "Object",
@@ -235,23 +314,71 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 41,
+                    "line": 46,
                     "modifierKind": [
                         124,
                         148
                     ]
+                },
+                {
+                    "name": "pageCounter",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "calculateTable",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "turnPage",
+                    "args": [
+                        {
+                            "name": "pageNumber",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "pageNumber",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -267,12 +394,16 @@
                 {
                     "name": "ButtonComponent",
                     "type": "component"
+                },
+                {
+                    "name": "FaIconComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\r\nimport {IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnInit{\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  headers: Array<string>= [];\r\n\r\n  ngOnInit() {\r\n    this.headers = this.getHeaders();\r\n  }\r\n\r\n  getHeaders = () => {\r\n    return Object.keys(this.data[0]);\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  protected readonly Object = Object;\r\n}\r\n",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faCloud, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnInit{\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  headers: Array<string>= [];\r\n\r\n  pageCounter = 0;\r\n\r\n  ngOnInit() {\r\n    this.headers = this.getHeaders();\r\n  }\r\n\r\n  getHeaders = () => {\r\n    return Object.keys(this.data[0]);\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  protected readonly Object = Object;\r\n  protected readonly faPlus = faPlus;\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  protected readonly faChevronRight = faChevronRight;\r\n\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  calculateTable() {\r\n    const starterIndex = this.pageCounter * 5;\r\n    return this.data.slice(starterIndex, starterIndex + 4);\r\n  }\r\n\r\n  protected readonly Math = Math;\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -281,7 +412,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<table>\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\"> Műveletek</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let row of data\">\r\n      <td *ngFor=\"let cell of Object.values(row)\">\r\n        <ng-container *ngIf=\"isBoolean(cell); then checkbox; else text;\">{{ cell }}</ng-container>\r\n        <ng-template #checkbox><input type=\"checkbox\"></ng-template>\r\n        <ng-template #text>{{cell}}</ng-template>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\"/>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n"
+            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconName]=\"faPlus\" [label]=\"'Létrehozás'\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of calculateTable(); let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <td *ngFor=\"let cell of Object.values(row)\">\r\n        <ng-container *ngIf=\"isBoolean(cell); then checkbox; else text;\">{{ cell }}</ng-container>\r\n        <ng-template #checkbox><input type=\"checkbox\" [checked]=\"cell\" [disabled]=\"true\"/></ng-template>\r\n        <ng-template #text>{{ cell }}</ng-template>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconName]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 0\"/>\r\n    {{pageCounter + 1}}. oldal\r\n    <app-button [iconName]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter === Math.floor(data.length / 5)\"/>\r\n  </div>\r\n</ng-template>\r\n<!--TODO: pager + checkbox component-->\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconName]=\"faPlus\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
         }
     ],
     "modules": [],
@@ -321,8 +452,8 @@
     },
     "routes": [],
     "coverage": {
-        "count": 26,
-        "status": "medium",
+        "count": 19,
+        "status": "low",
         "files": [
             {
                 "filePath": "src/app/app.component.ts",
@@ -348,17 +479,17 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 80,
-                "coverageCount": "4/5",
-                "status": "very-good"
+                "coveragePercent": 66,
+                "coverageCount": "4/6",
+                "status": "good"
             },
             {
                 "filePath": "src/components/table/table.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "TableComponent",
-                "coveragePercent": 25,
-                "coverageCount": "2/8",
+                "coveragePercent": 12,
+                "coverageCount": "2/16",
                 "status": "low"
             }
         ]

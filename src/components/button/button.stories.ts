@@ -49,3 +49,9 @@ export const JustIcon: Story = {
     label: ''
   }
 }
+
+export const Disabled: Story = {
+  args: {
+    disabled: true
+  }
+}

@@ -39,5 +39,8 @@ export class ButtonComponent {
   @Input()
   buttonType: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'
 
+  @Input()
+  disabled = false;
+
 
 }

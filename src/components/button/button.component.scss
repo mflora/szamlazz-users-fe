@@ -12,6 +12,14 @@
   height: 38px;
   border: none;
   text-transform: uppercase;
+  &:disabled {
+    background: lightgrey;
+    color: darkgrey;
+    cursor: default;
+    &:hover {
+      background: lightgrey;
+    }
+  }
   .icon{
     margin-right: 10px;
   }
@@ -52,4 +60,13 @@
   &:hover {
     color: black;
   }
+  &:disabled {
+    color: lightgrey;
+    background: transparent;
+    &:hover {
+      background: transparent;
+    }
+  }
 }
+
+
