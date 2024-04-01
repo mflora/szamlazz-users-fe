@@ -31,3 +31,41 @@ export const Primary: Story = {
     actionButtons: [faDragon, faUser]
   }
 }
+
+export const EmptyTable: Story = {
+  args: {
+    data: []
+  }
+}
+
+export const MoreData: Story = {
+  args: {
+    data: [
+      {'Név': 'Gipsz Jakab',
+        'Foglalkozás': 'Pék',
+        'Aktív': true,
+      },
+      {'Név': 'Kovács Mária',
+        'Foglalkozás': 'Hentes',
+        'Aktív': true,
+      },
+      {'Név': 'Tóth József',
+        'Foglalkozás': 'Kertész',
+        'Aktív': false,
+      },
+      {'Név': 'Balogh Béla',
+        'Foglalkozás': 'Kertész',
+        'Aktív': false,
+      },
+      {'Név': 'Nagy Béla',
+        'Foglalkozás': 'Kertész',
+        'Aktív': false,
+      },
+      {'Név': 'Kiss Béla',
+        'Foglalkozás': 'Kertész',
+        'Aktív': false,
+      },
+    ],
+    actionButtons: [faDragon, faUser]
+  }
+}

@@ -1,21 +1,39 @@
-<table>
-  <thead>
+<ng-container *ngIf="data.length > 0; then table; else empty"></ng-container>
+<ng-template #table>
+  <app-button [iconName]="faPlus" [label]="'Létrehozás'"/>
+  <table>
+    <thead>
     <tr>
       <th *ngFor="let header of headers"> {{ header }}</th>
-      <th *ngIf="actionButtons" [colSpan]="actionButtons.length"> Műveletek</th>
+      <th *ngIf="actionButtons" [colSpan]="actionButtons.length" class="actions"> Műveletek</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of data">
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of shownTableData; let i = index" [ngStyle]="{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}">
       <td *ngFor="let cell of Object.values(row)">
         <ng-container *ngIf="isBoolean(cell); then checkbox; else text;">{{ cell }}</ng-container>
         <ng-template #checkbox><input type="checkbox" [checked]="cell" [disabled]="true"/></ng-template>
-        <ng-template #text>{{cell}}</ng-template>
+        <ng-template #text>{{ cell }}</ng-template>
       </td>
       <td *ngFor="let action of actionButtons">
         <app-button [iconName]="action"/>
       </td>
     </tr>
-  </tbody>
-</table>
-<!--TODO: pager + checkbox component-->
+    </tbody>
+  </table>
+  <div class="pager">
+    <app-button [iconName]="faChevronLeft" (onClick)="turnPage((-1))" [disabled]="pageCounter === 0"/>
+    {{pageCounter + 1}}. oldal
+    <app-button [iconName]="faChevronRight" (onClick)="turnPage(1)" [disabled]="pageCounter === Math.floor(data.length / 5)"/>
+  </div>
+</ng-template>
+<!--TODO: checkbox component-->
+
+<ng-template #empty>
+  <div class="empty">
+    <fa-icon [icon]="faFaceSadCry" size="8x"/>
+    <b class="title">Nincs felhasználó</b>
+    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>
+    <app-button [label]="'Új felhasználó hozzáadása'" [iconName]="faPlus"></app-button>
+  </div>
+</ng-template>
