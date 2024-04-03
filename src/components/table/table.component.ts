@@ -3,7 +3,7 @@ import {faChevronLeft, faChevronRight, faPlus, IconDefinition} from "@fortawesom
 import {CommonModule} from "@angular/common";
 import {ButtonComponent} from "../button/button.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faFaceSadCry} from "@fortawesome/free-regular-svg-icons";
+import {faCircleCheck, faCircleXmark, faFaceSadCry} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-table',
@@ -61,4 +61,6 @@ export class TableComponent implements OnInit{
   }
 
   protected readonly Math = Math;
+  protected readonly faCircleCheck = faCircleCheck;
+  protected readonly faCircleXmark = faCircleXmark;
 }

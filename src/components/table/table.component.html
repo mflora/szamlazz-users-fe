@@ -12,11 +12,11 @@
     <tr *ngFor="let row of shownTableData; let i = index" [ngStyle]="{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}">
       <td *ngFor="let cell of Object.values(row)">
         <ng-container *ngIf="isBoolean(cell); then checkbox; else text;">{{ cell }}</ng-container>
-        <ng-template #checkbox><input type="checkbox" [checked]="cell" [disabled]="true"/></ng-template>
+        <ng-template #checkbox><fa-icon [icon]="cell ? faCircleCheck : faCircleXmark" size="xl"/></ng-template>
         <ng-template #text>{{ cell }}</ng-template>
       </td>
       <td *ngFor="let action of actionButtons">
-        <app-button [iconName]="action"/>
+        <app-button [iconName]="action" class="action-button"/>
       </td>
     </tr>
     </tbody>
@@ -27,7 +27,6 @@
     <app-button [iconName]="faChevronRight" (onClick)="turnPage(1)" [disabled]="pageCounter === Math.floor(data.length / 5)"/>
   </div>
 </ng-template>
-<!--TODO: checkbox component-->
 
 <ng-template #empty>
   <div class="empty">
