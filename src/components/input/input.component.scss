@@ -1,0 +1,22 @@
+.input-container{
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: #fff;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  color: #5b747b;
+  flex-direction: column;
+  justify-content: center;
+  input {
+    width: 100%;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.focused {
+  border: 1px solid #94bee3;
+}

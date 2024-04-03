@@ -1,0 +1,13 @@
+<div class="input-container" (click)="makeFocused($event)" (blur)="makeBlurred($event)" tabindex="1" #container>
+  <div>{{label}}</div>
+  <input [type]="type"
+          [disabled]="disabled"
+          [(ngModel)]="value"
+          (input)="onInput()"
+          [minLength]="minLength"
+          [maxLength]="maxLength"
+          [required]="required"
+         tabindex="1"
+         (blur)="asd($event)"
+  />
+</div>
