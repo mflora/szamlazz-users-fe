@@ -1,13 +1,25 @@
-<div class="input-container" (click)="makeFocused($event)" (blur)="makeBlurred($event)" tabindex="1" #container>
+<div class="input-container" (click)="makeFocused($event)"
+     (blur)="makeBlurred($event)"
+     tabindex="1"
+     [ngClass]="control.invalid && control.touched ? 'invalid-input' : ''"
+     #container
+>
   <div>{{label}}</div>
   <input [type]="type"
-          [disabled]="disabled"
-          [(ngModel)]="value"
-          (input)="onInput()"
-          [minLength]="minLength"
-          [maxLength]="maxLength"
-          [required]="required"
+         [disabled]="disabled"
+         (input)="onInput()"
          tabindex="1"
-         (blur)="asd($event)"
+         (blur)="applyContainerBlur($event)"
+         [formControl]="control"
   />
+</div>
+<div class="error-messages">
+  <div *ngIf="control.invalid && control.touched && control.errors?.['required']">A mező kitöltése kötelező</div>
+  <div *ngIf="control.invalid && control.touched && control.errors?.['minlength']">A mező minimális
+    hossza {{ control.errors?.['minlength'].requiredLength }}
+  </div>
+  <div *ngIf="control.invalid && control.touched && control.errors?.['maxlength']">A mező maximális
+    hossza {{ control.errors?.['maxlength'].requiredLength }}
+  </div>
+  <div *ngIf="control.invalid && control.touched && control.errors?.['pattern']">Nem megfelelő formátum.</div>
 </div>

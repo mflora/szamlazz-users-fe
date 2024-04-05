@@ -6,13 +6,17 @@ import {
   Output,
 } from '@angular/core';
 import {BehaviorSubject, debounceTime,} from "rxjs";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-input',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgClass,
+    NgIf
   ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss'
@@ -24,20 +28,16 @@ export class InputComponent implements OnInit, OnDestroy {
   @Input()
   type: 'text' | 'email' = 'text';
   @Input()
-  value = '';
-  @Input()
   label = 'Label';
   @Input()
   disabled = false;
   @Input()
-  minLength = 0;
+  name = '';
   @Input()
-  maxLength = 128;
-  @Input()
-  required = false;
+  control = new FormControl('');
 
   @Output()
-  onValueChange = new EventEmitter<string>;
+  valueChange = new EventEmitter<string>;
 
   ngOnInit(): void {
     this.valueSubject.pipe(debounceTime(500))
@@ -46,11 +46,20 @@ export class InputComponent implements OnInit, OnDestroy {
       });
   }
 
+  get value(): string{
+    return this.control.value!;
+  }
+
+  set value(val: string) {
+    this.control.setValue(val);
+    this.valueChange.emit(val);
+  }
+
   onInput(){
     this.valueSubject.next(this.value);
   }
   valueChangeHandler() {
-    this.onValueChange.emit(this.value);
+    this.valueChange.emit(this.value);
   }
 
   ngOnDestroy(): void {
@@ -65,7 +74,7 @@ export class InputComponent implements OnInit, OnDestroy {
     $event.currentTarget.classList.remove('focused');
   }
 
-  asd($event: any) {
+  applyContainerBlur($event: any) {
     $event.target.parentNode.classList.remove('focused');
   }
 }

@@ -7,7 +7,7 @@ const meta: Meta<InputComponent> = {
   component: InputComponent,
   argTypes: {
   },
-  args: { onValueChange: fn() },
+  args: { valueChange: fn() },
 };
 
 export default meta;

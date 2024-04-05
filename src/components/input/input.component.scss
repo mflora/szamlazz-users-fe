@@ -20,3 +20,16 @@
 .focused {
   border: 1px solid #94bee3;
 }
+
+.invalid-input {
+  border: 1px solid red;
+}
+
+.error-messages {
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  color: red;
+  padding-top: 2px;
+  padding-left: 8px;
+  height: 20px;
+}
