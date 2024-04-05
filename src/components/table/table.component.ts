@@ -44,7 +44,7 @@ export class TableComponent implements OnChanges, OnInit {
   headers: Array<{ key: string, displayName: string }>= [];
 
   headerKeys = new Array<string>();
-  pageCounter = 0;
+  pageCounter = 1;
   shownTableData: Array<object> = [];
 
   actionButtonHandler(iconName: string, user: object){
@@ -53,7 +53,6 @@ export class TableComponent implements OnChanges, OnInit {
 
   ngOnChanges() {
     this.calculateTable();
-    console.log(this.data);
   }
 
   ngOnInit(): void {
@@ -73,17 +72,9 @@ export class TableComponent implements OnChanges, OnInit {
     });
   }
 
-  isColumnNeeded(key: string): boolean {
-    return !!this.headerKeys.find(headerKey => headerKey === key);
-  }
-
   isBoolean = (value: any) =>  {return typeof value === 'boolean'}
 
-  protected readonly Object = Object;
-  protected readonly faPlus = faPlus;
-  protected readonly faFaceSadCry = faFaceSadCry;
-  protected readonly faChevronLeft = faChevronLeft;
-  protected readonly faChevronRight = faChevronRight;
+
 
   turnPage(pageNumber: number) {
     this.pageCounter += pageNumber;
@@ -91,13 +82,23 @@ export class TableComponent implements OnChanges, OnInit {
   }
 
   calculateTable() {
-    const starterIndex = this.pageCounter * 5;
+    if(this.data.length !== 0 && this.pageCounter > Math.ceil(this.data.length / 5)) {
+      --this.pageCounter;
+    }
+
+    const starterIndex = (this.pageCounter -1) * 5;
     this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);
   }
 
-
+  findCell(headerCell: string, row: any): string {
+    return row[headerCell];
+  }
 
   protected readonly Math = Math;
   protected readonly faCircleCheck = faCircleCheck;
   protected readonly faCircleXmark = faCircleXmark;
+  protected readonly faPlus = faPlus;
+  protected readonly faFaceSadCry = faFaceSadCry;
+  protected readonly faChevronLeft = faChevronLeft;
+  protected readonly faChevronRight = faChevronRight;
 }

@@ -57,15 +57,8 @@ export class UserListComponent implements OnInit {
 
   loadTable() {
     this.usersService.listUsers().subscribe(result => {
-      // @ts-ignore
-      result['content'].forEach(user => {
-        delete user.links
-        delete user.content
-      })
-      // @ts-ignore
-      this.users = result['content'];
+      this.users = result['content'].filter((row: User) => row.id);
     });
-    console.log(this.users);
     this.isModalOpen = false;
   }
 }

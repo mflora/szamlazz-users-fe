@@ -10,15 +10,15 @@
     </thead>
     <tbody>
     <tr *ngFor="let row of shownTableData; let i = index" [ngStyle]="{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}">
-      <ng-container *ngFor="let cell of Object.values(row); let j = index">
-        <td *ngIf="isColumnNeeded(Object.keys(row)[j])">
-          <ng-container *ngIf="isBoolean(cell); then checkbox; else text;">{{ cell }}</ng-container>
-          <ng-template #checkbox>
-            <fa-icon [icon]="cell ? faCircleCheck : faCircleXmark" size="xl"/>
-          </ng-template>
-          <ng-template #text>{{ cell }}</ng-template>
-        </td>
-      </ng-container>
+      <td *ngFor="let headerCell of headers">
+        <ng-container *ngIf="isBoolean(findCell(headerCell.key, row)); then checkbox; else text;"></ng-container>
+        <ng-template #checkbox>
+          <fa-icon [icon]="findCell(headerCell.key, row) ? faCircleCheck : faCircleXmark" size="xl"/>
+        </ng-template>
+        <ng-template #text>
+          {{ findCell(headerCell.key, row) }}
+        </ng-template>
+      </td>
       <td *ngFor="let action of actionButtons">
         <app-button [iconName]="action" class="action-button" (onClick)="actionButtonHandler(action.iconName, row)"/>
       </td>
@@ -26,9 +26,9 @@
     </tbody>
   </table>
   <div class="pager">
-    <app-button [iconName]="faChevronLeft" (onClick)="turnPage((-1))" [disabled]="pageCounter === 0"/>
-    {{pageCounter + 1}}. oldal
-    <app-button [iconName]="faChevronRight" (onClick)="turnPage(1)" [disabled]="pageCounter === Math.floor(data.length / 5)"/>
+    <app-button [iconName]="faChevronLeft" (onClick)="turnPage((-1))" [disabled]="pageCounter === 1"/>
+    {{pageCounter}}. oldal
+    <app-button [iconName]="faChevronRight" (onClick)="turnPage(1)" [disabled]="pageCounter >= data.length / 5"/>
   </div>
 </ng-template>
 
