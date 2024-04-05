@@ -1,1 +1,14 @@
-<p>create-user works!</p>
+<div class="container">
+  <div class="title">Új felhasználó hozzáadása</div>
+  <form [formGroup]="createUserForm">
+    <app-input [label]="'Vezetéknév'" [control]="lastName"/>
+    <app-input [label]="'Keresztnév'" [control]="firstName"/>
+    <app-input [label]="'Cím'" [control]="address"/>
+    <app-input [label]="'Telefon'" [control]="telephone"/>
+    <app-dropdown [label]="'Foglalkozás'" [control]="job" [options]="options"/>
+    <div class="buttons-container">
+      <app-button [label]="'Létrehozás'" (onClick)="createUser()" [disabled]="createUserForm.invalid"/>
+      <app-button [label]="'Mégsem'" [buttonStyle]="'secondary-ghost'" (onClick)="navigateToUserList()"/>
+    </div>
+  </form>
+</div>

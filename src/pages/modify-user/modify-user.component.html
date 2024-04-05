@@ -1,1 +1,19 @@
-<p>modify-user works!</p>
+<div class="container">
+  <div class="title">Új felhasználó hozzáadása</div>
+  <form [formGroup]="modifyUserForm">
+    <app-input [label]="'Vezetéknév'" [control]="lastName"/>
+    <app-input [label]="'Keresztnév'" [control]="firstName"/>
+    <app-input [label]="'Cím'" [control]="address"/>
+    <app-input [label]="'Telefon'" [control]="telephone"/>
+    <app-dropdown [label]="'Foglalkozás'" [control]="job" [options]="options"/>
+    <app-checkbox/>
+    <div class="buttons-container">
+      <app-button [label]="'Módosítás'" (onClick)="modifyUser()" [disabled]="modifyUserForm.invalid"/>
+      <app-button [label]="'Törlés'" [buttonStyle]="'secondary'" (onClick)="openDeleteModal()"/>
+      <app-button [label]="'Mégsem'" [buttonStyle]="'secondary-ghost'" (onClick)="navigateToUserList()"/>
+    </div>
+  </form>
+</div>
+
+<app-modal [modalData]="userInfo" [isOpen]="isModalOpen"/>
+

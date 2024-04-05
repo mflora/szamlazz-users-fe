@@ -28,8 +28,8 @@ export class UsersService {
     return this.http.put<User>(`${this.BASE_PATH}/${user.id}`, user, this.httpOptions);
   }
 
-  listUsers(): Observable<Array<User>> {
-    return this.http.get<Array<User>>(this.BASE_PATH, this.httpOptions);
+  listUsers(): Observable<any> {
+    return this.http.get(this.BASE_PATH, this.httpOptions);
   }
 
   deleteUser(userId: number): Observable<any> {
