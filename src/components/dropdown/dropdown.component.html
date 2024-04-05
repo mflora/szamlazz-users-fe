@@ -1,0 +1,9 @@
+<div class="input-container" [ngClass]="control.invalid && control.touched ? 'invalid-input' : ''">
+  <div>{{label}}</div>
+  <select #dropdown [formControl]="control" (change)="selectionChange(dropdown.value)">
+    <option *ngFor="let opt of options" [value]="opt.value">{{ opt.displayName }}</option>
+  </select>
+</div>
+<div class="error-messages">
+  <div *ngIf="control.invalid && control.touched && control.errors?.['required']">A mező kitöltése kötelező</div>
+</div>
