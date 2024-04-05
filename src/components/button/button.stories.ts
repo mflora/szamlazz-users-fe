@@ -27,13 +27,13 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
-    buttonType: 'secondary'
+    buttonStyle: 'secondary'
   },
 };
 
 export const SecondaryGhost: Story = {
   args: {
-    buttonType: 'secondary-ghost'
+    buttonStyle: 'secondary-ghost'
   },
 };
 

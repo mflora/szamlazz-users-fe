@@ -37,10 +37,13 @@ export class ButtonComponent {
    * The color schema of the button
    */
   @Input()
-  buttonType: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'
+  buttonStyle: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'
 
   @Input()
   disabled = false;
+
+  @Input()
+  type: 'button' | 'submit' | 'reset' = 'button'
 
 
 }
