@@ -1,0 +1,12 @@
+<div *ngIf="isOpen" class="modal-wrapper">
+  <div class="modal">
+    <div class="modal-text">Biztosan törli a {{ modalData?.lastName }} {{ modalData?.firstName }} felhasználót?</div>
+
+    <div class="buttons-container">
+      <app-button [label]="'Törlés'" (onClick)="deleteClicked()"/>
+      <app-button [label]="'Mégse'" [buttonStyle]="'secondary-ghost'" (onClick)="onClose()"/>
+    </div>
+  </div>
+
+  <div class="modal-overlay" (click)="onClose()"></div>
+</div>
