@@ -1,1 +1,4 @@
-<input type="checkbox" [checked]="checked" (change)="checkedChange()"/>
+<div class="checkbox-container">
+  <input [formControl]="control" type="checkbox" (change)="checkedChange()"/>
+  <div class="checkbox-label">{{label}}</div>
+</div>

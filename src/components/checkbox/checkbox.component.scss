@@ -1,0 +1,31 @@
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  input + div {
+    margin-left: 10px;
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 1px solid #ff6519;
+    border-radius: 4px;
+  }
+
+  input[type="checkbox"]::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    clip-path: polygon(17% 54%, 28% 43%, 38% 54%, 70% 22%, 81% 33%, 38% 75%, 17% 54%);
+    transform: scale(0);
+    background-color: #ff6519;
+  }
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+}

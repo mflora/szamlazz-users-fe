@@ -7,7 +7,7 @@ const meta: Meta<CheckboxComponent> = {
   component: CheckboxComponent,
   argTypes: {
   },
-  args: { onCheckedChange: fn() },
+  args: { onCheckedChange: fn(), label: 'Checkbox label' },
 };
 
 export default meta;

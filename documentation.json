@@ -3,6 +3,78 @@
     "interfaces": [],
     "injectables": [
         {
+            "name": "ModifyUserService",
+            "id": "injectable-ModifyUserService-6c4157471bdd671b3d26018eaa170d37e6be1be6d62f47bab009438e7ba57adf13c463df4d4ee13317d33ac3b407574d8e305135310f420b5c9f6be011835fc8",
+            "file": "src/services/modify-user.service.ts",
+            "properties": [
+                {
+                    "name": "user",
+                    "defaultValue": "undefined",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | undefined",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "methods": [
+                {
+                    "name": "get",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "set",
+                    "args": [
+                        {
+                            "name": "user",
+                            "type": "User",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "user",
+                            "type": "User",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport {User} from \"../../types/User\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ModifyUserService {\r\n  user: User | undefined = undefined;\r\n\r\n  constructor() { }\r\n\r\n  set (user: User){\r\n    this.user = user;\r\n  }\r\n\r\n  get () {\r\n    return this.user;\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
             "name": "UsersService",
             "id": "injectable-UsersService-1d7912eef2d9cebf93e891ada737bfb7cce266456a45d825f04758cc80e9653fc2f0a37c636be8641c1e85a578e12233c8fb151b7ae75aa72b4f93fdb4f17955",
             "file": "src/services/users.service.ts",
@@ -166,7 +238,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-43518d1de6822a235cdd4e7de9f139d165441fc91a035723d3fede36e672f6b0f532bed092e5ff43263f2cfff9e25629cadfe9e3a1fc508f83fba3968cd40e2a",
+            "id": "component-AppComponent-3a821ef4a37ac7f74bc57e79af189192eecac28021e1080cddb1f15277458d9cd512229ffcd7ba91d003d0768b0523d746b70ab0cf890fc77af4cd6f3f6ff60a",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -192,7 +264,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 13
                 }
             ],
             "methodsClass": [],
@@ -209,7 +281,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport {UsersService} from \"../services/users.service\";\r\n\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'users-fe';\r\n\r\n  constructor(users: UsersService) {\r\n    // users.saveUser({firstName: 'Flora', lastName: 'Mikola', active:true, job: 'KERTESZ', address: '7800 Siklos, Harkanyi ut 29/a', telephone: '+36206667320'})\r\n    //   .subscribe(data => console.log(data));\r\n    // console.log(users.listUsers().subscribe());\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\n\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'users-fe';\r\n\r\n  constructor() {}\r\n}\r\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -219,26 +291,8 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "users",
-                        "type": "UsersService",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 14,
-                "jsdoctags": [
-                    {
-                        "name": "users",
-                        "type": "UsersService",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
+                "args": [],
+                "line": 13
             },
             "extends": [],
             "templateData": "<router-outlet />\r\n"
@@ -425,7 +479,7 @@
         },
         {
             "name": "CreateUserComponent",
-            "id": "component-CreateUserComponent-bd9f05a0763160218d5125531837e1395a499c4220ae558b6f055d7aeb6beb79fb162e5712edb0aa908b7c9e13e0b63f3a4d9ce01c02d1cfb6c00d944a1ab30e",
+            "id": "component-CreateUserComponent-0034e389cfece79d43970d085e06b3dfa2cd4b7c5af3da0225cf3ca5ede73c0cf1b8c9ccc5a396112184577c33a31a2a577a12210c174cb4eb461025fa18860d",
             "file": "src/pages/create-user/create-user.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -451,7 +505,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 29
                 },
                 {
                     "name": "createUserForm",
@@ -460,7 +514,7 @@
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 25
                 },
                 {
                     "name": "firstName",
@@ -470,7 +524,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 27
                 },
                 {
                     "name": "job",
@@ -480,7 +534,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 31
                 },
                 {
                     "name": "lastName",
@@ -490,7 +544,17 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 28
+                },
+                {
+                    "name": "options",
+                    "defaultValue": "jobOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
                 },
                 {
                     "name": "telephone",
@@ -500,7 +564,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 30
                 }
             ],
             "methodsClass": [
@@ -510,7 +574,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -520,7 +584,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -542,12 +606,20 @@
                 {
                     "name": "ReactiveFormsModule",
                     "type": "module"
+                },
+                {
+                    "name": "DropdownComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ModalComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, OnInit} from '@angular/core';\r\nimport {InputComponent} from \"../../components/input/input.component\";\r\nimport {ButtonComponent} from \"../../components/button/button.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {Router} from \"@angular/router\";\r\nimport {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\n\r\n@Component({\r\n  selector: 'app-create-user',\r\n  standalone: true,\r\n  imports: [\r\n    InputComponent,\r\n    ButtonComponent,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './create-user.component.html',\r\n  styleUrl: './create-user.component.scss'\r\n})\r\nexport class CreateUserComponent{\r\n  createUserForm: FormGroup;\r\n\r\n  firstName = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(64)]);\r\n  lastName = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(64)]);\r\n  address = new FormControl('', [Validators.maxLength(128)]);\r\n  telephone = new FormControl('', [Validators.maxLength(128), Validators.pattern('^(?:06|\\\\+36|0036)\\\\d{8,9}$')]);\r\n  job = new FormControl('', Validators.required);\r\n\r\n  constructor(private usersService: UsersService, private router: Router, private formBuilder: FormBuilder) {\r\n    this.createUserForm = this.formBuilder.group({\r\n      firstName: this.firstName,\r\n      lastName: this.lastName,\r\n      address: this.address,\r\n      telephone: this.telephone,\r\n      job: this.job\r\n    })\r\n  }\r\n\r\n  navigateToUserList() {\r\n    this.router.navigateByUrl('');\r\n  }\r\n\r\n  createUser() {\r\n    let user = this.createUserForm.value;\r\n    user.active = true;\r\n    this.usersService.saveUser(user).subscribe(() => this.navigateToUserList());\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component} from '@angular/core';\r\nimport {InputComponent} from \"../../components/input/input.component\";\r\nimport {ButtonComponent} from \"../../components/button/button.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {Router} from \"@angular/router\";\r\nimport {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {DropdownComponent} from \"../../components/dropdown/dropdown.component\";\r\nimport {jobOptions} from \"../_utils/dropdown-options\";\r\nimport {ModalComponent} from \"../../components/modal/modal.component\";\r\n\r\n@Component({\r\n  selector: 'app-create-user',\r\n  standalone: true,\r\n  imports: [\r\n    InputComponent,\r\n    ButtonComponent,\r\n    ReactiveFormsModule,\r\n    DropdownComponent,\r\n    ModalComponent\r\n  ],\r\n  templateUrl: './create-user.component.html',\r\n  styleUrl: './create-user.component.scss'\r\n})\r\nexport class CreateUserComponent{\r\n  createUserForm: FormGroup;\r\n\r\n  firstName = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(64)]);\r\n  lastName = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(64)]);\r\n  address = new FormControl('', [Validators.maxLength(128)]);\r\n  telephone = new FormControl('', [Validators.maxLength(128), Validators.pattern('^(?:06|\\\\+36|0036)\\\\d{8,9}$')]);\r\n  job = new FormControl('', Validators.required);\r\n\r\n  options = jobOptions;\r\n\r\n  constructor(private usersService: UsersService, private router: Router, private formBuilder: FormBuilder) {\r\n    this.createUserForm = this.formBuilder.group({\r\n      firstName: this.firstName,\r\n      lastName: this.lastName,\r\n      address: this.address,\r\n      telephone: this.telephone,\r\n      job: this.job\r\n    })\r\n  }\r\n\r\n  navigateToUserList() {\r\n    this.router.navigateByUrl('');\r\n  }\r\n\r\n  createUser() {\r\n    let user = this.createUserForm.value;\r\n    user.active = true;\r\n    this.usersService.saveUser(user).subscribe(() => this.navigateToUserList());\r\n  }\r\n}\r\n",
             "styleUrl": "./create-user.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -577,7 +649,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 26,
+                "line": 33,
                 "jsdoctags": [
                     {
                         "name": "usersService",
@@ -609,11 +681,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"createUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-input [label]=\"'Foglalkozás'\" [control]=\"job\"/>\r\n    <!--TODO: foglalkozas dropdown-->\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Létrehozás'\" (onClick)=\"createUser()\" [disabled]=\"createUserForm.invalid\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
+            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"createUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Létrehozás'\" (onClick)=\"createUser()\" [disabled]=\"createUserForm.invalid\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
         },
         {
             "name": "DropdownComponent",
-            "id": "component-DropdownComponent-5973716ac7f2b6b50572e4a3eb7829212da98ce7da48cad6d7204c4d2978148c10888078ad055f98f3a50527c1c3fe71c719d46adc7b5f02fa2b5acdb0039621",
+            "id": "component-DropdownComponent-a6e67bb3f5a09b698fbc0b04f922345ae9858b90d55bf8834b5c0026fdda28283379e01da8ca269b29eba608f935abb087ac63214c301f60a541eafef62a5365",
             "file": "src/components/dropdown/dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -628,26 +700,139 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "control",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "defaultValue": "new Array<{value: string, displayName: string}>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onSelectionChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "selectionChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss'\r\n})\r\nexport class DropdownComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {CommonModule} from \"@angular/common\";\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    CommonModule\r\n  ],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss'\r\n})\r\nexport class DropdownComponent {\r\n  @Input()\r\n  label = '';\r\n  @Input()\r\n  options = new Array<{value: string, displayName: string}>();\r\n\r\n  @Output()\r\n  onSelectionChange = new EventEmitter<string>();\r\n\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  selectionChange(value: string) {\r\n    this.onSelectionChange.emit(value);\r\n  }\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.onSelectionChange.emit(val);\r\n  }\r\n}\r\n",
             "styleUrl": "./dropdown.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<select>\r\n  <option value=\"ASD\">Asd</option>\r\n  <option value=\"DDD\">Ddd</option>\r\n</select>\r\n"
+            "accessors": {
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 35,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "value",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 31
+                    }
+                }
+            },
+            "templateData": "<div class=\"input-container\" [ngClass]=\"control.invalid && control.touched ? 'invalid-input' : ''\">\r\n  <div>{{label}}</div>\r\n  <select #dropdown [formControl]=\"control\" (change)=\"selectionChange(dropdown.value)\">\r\n    <option *ngFor=\"let opt of options\" [value]=\"opt.value\">{{ opt.displayName }}</option>\r\n  </select>\r\n</div>\r\n<div class=\"error-messages\">\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['required']\">A mező kitöltése kötelező</div>\r\n</div>\r\n"
         },
         {
             "name": "InputComponent",
@@ -939,8 +1124,144 @@
             "templateData": "<div class=\"input-container\" (click)=\"makeFocused($event)\"\r\n     (blur)=\"makeBlurred($event)\"\r\n     tabindex=\"1\"\r\n     [ngClass]=\"control.invalid && control.touched ? 'invalid-input' : ''\"\r\n     #container\r\n>\r\n  <div>{{label}}</div>\r\n  <input [type]=\"type\"\r\n         [disabled]=\"disabled\"\r\n         (input)=\"onInput()\"\r\n         tabindex=\"1\"\r\n         (blur)=\"applyContainerBlur($event)\"\r\n         [formControl]=\"control\"\r\n  />\r\n</div>\r\n<div class=\"error-messages\">\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['required']\">A mező kitöltése kötelező</div>\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['minlength']\">A mező minimális\r\n    hossza {{ control.errors?.['minlength'].requiredLength }}\r\n  </div>\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['maxlength']\">A mező maximális\r\n    hossza {{ control.errors?.['maxlength'].requiredLength }}\r\n  </div>\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['pattern']\">Nem megfelelő formátum.</div>\r\n</div>\r\n"
         },
         {
+            "name": "ModalComponent",
+            "id": "component-ModalComponent-fd492ff876f7d1404415178736c4f29b98251e2bd7afd63fed2f6d06078faa9b6be8a1d4d4671932f4d36500e13b847dfbe92ccd610a509bfcb4704b8b3abd00",
+            "file": "src/components/modal/modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./modal.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "isOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "modalData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "User | undefined",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onDelete",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "deleteClicked",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onClose",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {User} from \"../../../types/User\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {Router} from \"@angular/router\";\r\n\r\n@Component({\r\n  selector: 'app-modal',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n  ],\r\n  templateUrl: './modal.component.html',\r\n  styleUrl: './modal.component.scss'\r\n})\r\nexport class ModalComponent {\r\n  @Input()\r\n  isOpen = false;\r\n  @Input()\r\n  modalData: User | undefined;\r\n  @Output()\r\n  onDelete = new EventEmitter();\r\n\r\n\r\n  constructor(private userService: UsersService, private router: Router) {}\r\n  onClose() {\r\n    this.isOpen = false;\r\n  }\r\n\r\n  deleteClicked() {\r\n    if(this.modalData) {\r\n      this.userService.deleteUser(this.modalData.id!).subscribe(() => {\r\n        this.onDelete.emit();\r\n        this.onClose();\r\n        this.router.navigateByUrl('');\r\n      });\r\n    }\r\n  }\r\n}\r\n",
+            "styleUrl": "./modal.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "userService",
+                        "type": "UsersService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 24,
+                "jsdoctags": [
+                    {
+                        "name": "userService",
+                        "type": "UsersService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div *ngIf=\"isOpen\" class=\"modal-wrapper\">\r\n  <div class=\"modal\">\r\n    <div class=\"modal-text\">Biztosan törli a {{ modalData?.lastName }} {{ modalData?.firstName }} felhasználót?</div>\r\n\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Törlés'\" (onClick)=\"deleteClicked()\"/>\r\n      <app-button [label]=\"'Mégse'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"onClose()\"/>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"modal-overlay\" (click)=\"onClose()\"></div>\r\n</div>\r\n"
+        },
+        {
             "name": "ModifyUserComponent",
-            "id": "component-ModifyUserComponent-71fa1a3cbfa9a9fb7ff7cc28e864c361065bc7916ddb7c335230bc1093bc8b25b530b3fbb0518e836bdc83b584f4f12772398fc0fee87c1e121bc33b309cf877",
+            "id": "component-ModifyUserComponent-e5a899c3ef668bee516bddd0ea88e88a43d743bc8090f354e9c1ac25c685a1e0cf5b1300158a7d0714038f5f2492cdea03642873cffd6ee987345a127542c7f5",
             "file": "src/pages/modify-user/modify-user.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -957,28 +1278,248 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "active",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "address",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "firstName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "isModalOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 64
+                },
+                {
+                    "name": "job",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "lastName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "modifyUserForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "options",
+                    "defaultValue": "jobOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "telephone",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "userInfo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "modifyUser",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "navigateToUserList",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openDeleteModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "DropdownComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CheckboxComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ModalComponent",
+                    "type": "component"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-modify-user',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './modify-user.component.html',\r\n  styleUrl: './modify-user.component.scss'\r\n})\r\nexport class ModifyUserComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport {ModifyUserService} from \"../../services/modify-user.service\";\r\nimport {ButtonComponent} from \"../../components/button/button.component\";\r\nimport {DropdownComponent} from \"../../components/dropdown/dropdown.component\";\r\nimport {InputComponent} from \"../../components/input/input.component\";\r\nimport {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {CheckboxComponent} from \"../../components/checkbox/checkbox.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {Router} from \"@angular/router\";\r\nimport {jobOptions} from \"../_utils/dropdown-options\";\r\nimport {User} from \"../../../types/User\";\r\nimport {ModalComponent} from \"../../components/modal/modal.component\";\r\n\r\n@Component({\r\n  selector: 'app-modify-user',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonComponent,\r\n    DropdownComponent,\r\n    InputComponent,\r\n    ReactiveFormsModule,\r\n    CheckboxComponent,\r\n    ModalComponent\r\n  ],\r\n  templateUrl: './modify-user.component.html',\r\n  styleUrl: './modify-user.component.scss'\r\n})\r\nexport class ModifyUserComponent {\r\n\r\n  modifyUserForm: FormGroup;\r\n\r\n  firstName: FormControl;\r\n  lastName: FormControl;\r\n  address: FormControl;\r\n  telephone: FormControl;\r\n  job: FormControl;\r\n  active: FormControl;\r\n\r\n  userInfo: User;\r\n\r\n  options = jobOptions;\r\n\r\n  constructor(private usersService: UsersService, private router: Router, private formBuilder: FormBuilder, private modifyHelper: ModifyUserService) {\r\n    this.userInfo = this.modifyHelper.get()!;\r\n\r\n    this.firstName = new FormControl(this.userInfo.firstName, [Validators.required, Validators.minLength(2), Validators.maxLength(64)]);\r\n    this.lastName = new FormControl(this.userInfo.lastName, [Validators.required, Validators.minLength(2), Validators.maxLength(64)]);\r\n    this.address = new FormControl(this.userInfo.address, [Validators.maxLength(128)]);\r\n    this.telephone = new FormControl(this.userInfo.telephone, [Validators.maxLength(128), Validators.pattern('^(?:06|\\\\+36|0036)\\\\d{8,9}$')]);\r\n    this.job = new FormControl(this.userInfo.job, Validators.required);\r\n    this.active = new FormControl(this.userInfo.active);\r\n\r\n    this.modifyUserForm = this.formBuilder.group({\r\n      firstName: this.firstName,\r\n      lastName: this.lastName,\r\n      address: this.address,\r\n      telephone: this.telephone,\r\n      job: this.job,\r\n      active: this.active\r\n    })\r\n\r\n  }\r\n\r\n  isModalOpen = false;\r\n\r\n\r\n  modifyUser() {\r\n    let user = this.modifyUserForm.value;\r\n    user.id = this.userInfo.id;\r\n    this.usersService.updateUser(this.modifyUserForm.value).subscribe(() => this.navigateToUserList());\r\n  }\r\n\r\n  openDeleteModal() {\r\n    this.isModalOpen = true;\r\n  }\r\n\r\n  navigateToUserList() {\r\n    this.router.navigateByUrl('');\r\n  }\r\n}\r\n",
             "styleUrl": "./modify-user.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "usersService",
+                        "type": "UsersService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "formBuilder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "modifyHelper",
+                        "type": "ModifyUserService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 41,
+                "jsdoctags": [
+                    {
+                        "name": "usersService",
+                        "type": "UsersService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "formBuilder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "modifyHelper",
+                        "type": "ModifyUserService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<p>modify-user works!</p>\r\n"
+            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"modifyUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <app-checkbox/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Módosítás'\" (onClick)=\"modifyUser()\" [disabled]=\"modifyUserForm.invalid\"/>\r\n      <app-button [label]=\"'Törlés'\" [buttonStyle]=\"'secondary'\" (onClick)=\"openDeleteModal()\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<app-modal [modalData]=\"userInfo\" [isOpen]=\"isModalOpen\"/>\r\n\r\n"
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-87421e08fba9627244e31ead6ce1c2235b553d9ce5c0acfd37814958efb12b2726d3d85c3c713522f453f8e5924a9ae27f032bea0f45275d9eb1103a71b5e7e6",
+            "id": "component-TableComponent-6fa336beea79517d7d889b7c102e2b2c8898a2853ced00c5cc600c96e43033ad2a1dcfecee1e47715e3d4729226704f4139a8dc7aa009e0d033acd374654f33b",
             "file": "src/components/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1001,7 +1542,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nArray of the buttons needed for the table actions.\n",
                     "description": "<p>Array of the buttons needed for the table actions.</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "Array<IconDefinition> | null",
                     "decorators": []
                 },
@@ -1012,7 +1553,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe data of the table\n",
                     "description": "<p>The data of the table</p>\n",
-                    "line": 25,
+                    "line": 26,
                     "type": "Array<object>",
                     "decorators": []
                 },
@@ -1021,7 +1562,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 44,
                     "type": "Array<literal type>",
                     "decorators": []
                 }
@@ -1029,12 +1570,20 @@
             "outputsClass": [
                 {
                     "name": "actionButtonClicked",
+                    "defaultValue": "new EventEmitter<{ iconName: string, user: User }>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "mainButtonClicked",
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits an event when one of the action buttons are clicked.\n",
                     "description": "<p>Emits an event when one of the action buttons are clicked.</p>\n",
-                    "line": 37,
+                    "line": 38,
                     "type": "EventEmitter"
                 }
             ],
@@ -1047,7 +1596,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 78,
+                    "line": 85,
                     "modifierKind": [
                         124,
                         148
@@ -1061,7 +1610,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 79,
+                    "line": 86,
                     "modifierKind": [
                         124,
                         148
@@ -1075,7 +1624,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 108,
+                    "line": 101,
                     "modifierKind": [
                         124,
                         148
@@ -1089,7 +1638,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 109,
+                    "line": 102,
                     "modifierKind": [
                         124,
                         148
@@ -1103,7 +1652,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 77,
+                    "line": 84,
                     "modifierKind": [
                         124,
                         148
@@ -1117,7 +1666,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 76,
+                    "line": 83,
                     "modifierKind": [
                         124,
                         148
@@ -1131,7 +1680,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 62
+                    "line": 69
                 },
                 {
                     "name": "headerKeys",
@@ -1141,7 +1690,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 46
                 },
                 {
                     "name": "isBoolean",
@@ -1151,7 +1700,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 73
+                    "line": 80
                 },
                 {
                     "name": "Math",
@@ -1161,7 +1710,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 107,
+                    "line": 100,
                     "modifierKind": [
                         124,
                         148
@@ -1175,7 +1724,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 75,
+                    "line": 82,
                     "modifierKind": [
                         124,
                         148
@@ -1189,7 +1738,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 47
                 },
                 {
                     "name": "shownTableData",
@@ -1199,19 +1748,52 @@
                     "type": "Array<object>",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 48
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "calculateRows",
-                    "args": [],
+                    "name": "actionButtonHandler",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "user",
+                            "type": "object",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 50,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "user",
+                            "type": "object",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "calculateTable",
@@ -1219,7 +1801,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1236,7 +1818,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 69,
+                    "line": 76,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1257,7 +1839,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1267,7 +1849,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1284,7 +1866,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 81,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1322,7 +1904,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faCircleCheck, faCircleXmark, faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnChanges, OnInit {\r\n\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  /**\r\n   * Emits an event when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  actionButtonClicked = new EventEmitter();\r\n\r\n  @Input()\r\n  headers: Array<{ key: string, displayName: string }>= [];\r\n\r\n  headerKeys = new Array<string>();\r\n  pageCounter = 0;\r\n  shownTableData: Array<object> = [];\r\n\r\n  ngOnChanges() {\r\n    this.calculateRows();\r\n    this.calculateTable();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    if(!this.headers) {\r\n      this.headers = this.getHeaders();\r\n    } else {\r\n      this.headerKeys = this.headers.map(header => {\r\n        return header.key;\r\n      });\r\n    }\r\n\r\n  }\r\n\r\n  getHeaders = () => {\r\n    this.headerKeys = Object.keys(this.data[0]);\r\n    return Object.keys(this.data[0] ?? []).map(item =>{\r\n      return {key: item, displayName: item}\r\n    });\r\n  }\r\n\r\n  isColumnNeeded(key: string): boolean {\r\n    return !!this.headerKeys.find(headerKey => headerKey === key);\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  protected readonly Object = Object;\r\n  protected readonly faPlus = faPlus;\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  protected readonly faChevronRight = faChevronRight;\r\n\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  calculateTable() {\r\n    const starterIndex = this.pageCounter * 5;\r\n    this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);\r\n  }\r\n\r\n  calculateRows() {\r\n    let newData = [];\r\n\r\n\r\n    this.data.forEach(row => Object.keys(row)\r\n      .reduce((newObj, key) => {\r\n        // @ts-ignore\r\n        newObj[key] = this.headerKeys.find(hk => hk === key);\r\n        return newObj;\r\n      }, {})\r\n    );\r\n    console.log(this.data);\r\n  }\r\n\r\n\r\n\r\n  protected readonly Math = Math;\r\n  protected readonly faCircleCheck = faCircleCheck;\r\n  protected readonly faCircleXmark = faCircleXmark;\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faCircleCheck, faCircleXmark, faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\nimport {User} from \"../../../types/User\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnChanges, OnInit {\r\n\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  /**\r\n   * Emits an event when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  mainButtonClicked = new EventEmitter();\r\n\r\n  @Output()\r\n  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();\r\n\r\n  @Input()\r\n  headers: Array<{ key: string, displayName: string }>= [];\r\n\r\n  headerKeys = new Array<string>();\r\n  pageCounter = 0;\r\n  shownTableData: Array<object> = [];\r\n\r\n  actionButtonHandler(iconName: string, user: object){\r\n    this.actionButtonClicked.emit({iconName: iconName, user: user as User});\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.calculateTable();\r\n    console.log(this.data);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    if(!this.headers) {\r\n      this.headers = this.getHeaders();\r\n    } else {\r\n      this.headerKeys = this.headers.map(header => {\r\n        return header.key;\r\n      });\r\n    }\r\n  }\r\n\r\n  getHeaders = () => {\r\n    this.headerKeys = Object.keys(this.data[0]);\r\n    return Object.keys(this.data[0] ?? []).map(item =>{\r\n      return {key: item, displayName: item}\r\n    });\r\n  }\r\n\r\n  isColumnNeeded(key: string): boolean {\r\n    return !!this.headerKeys.find(headerKey => headerKey === key);\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  protected readonly Object = Object;\r\n  protected readonly faPlus = faPlus;\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  protected readonly faChevronRight = faChevronRight;\r\n\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  calculateTable() {\r\n    const starterIndex = this.pageCounter * 5;\r\n    this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);\r\n  }\r\n\r\n\r\n\r\n  protected readonly Math = Math;\r\n  protected readonly faCircleCheck = faCircleCheck;\r\n  protected readonly faCircleXmark = faCircleXmark;\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1332,11 +1914,11 @@
                 "OnChanges",
                 "OnInit"
             ],
-            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconName]=\"faPlus\" [label]=\"'Létrehozás'\" (onClick)=\"actionButtonClicked.emit()\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header.displayName }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of shownTableData; let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <td *ngFor=\"let cell of Object.values(row); let j = index\">\r\n        <div *ngIf=\"isColumnNeeded(Object.keys(row)[j])\">\r\n          <ng-container *ngIf=\"isBoolean(cell); then checkbox; else text;\">{{ cell }}</ng-container>\r\n          <ng-template #checkbox>\r\n            <fa-icon [icon]=\"cell ? faCircleCheck : faCircleXmark\" size=\"xl\"/>\r\n          </ng-template>\r\n          <ng-template #text>{{ cell }}</ng-template>\r\n        </div>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\" class=\"action-button\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconName]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 0\"/>\r\n    {{pageCounter + 1}}. oldal\r\n    <app-button [iconName]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter === Math.floor(data.length / 5)\"/>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconName]=\"faPlus\" (onClick)=\"actionButtonClicked.emit()\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
+            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconName]=\"faPlus\" [label]=\"'Létrehozás'\" (onClick)=\"mainButtonClicked.emit()\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header.displayName }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of shownTableData; let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <ng-container *ngFor=\"let cell of Object.values(row); let j = index\">\r\n        <td *ngIf=\"isColumnNeeded(Object.keys(row)[j])\">\r\n          <ng-container *ngIf=\"isBoolean(cell); then checkbox; else text;\">{{ cell }}</ng-container>\r\n          <ng-template #checkbox>\r\n            <fa-icon [icon]=\"cell ? faCircleCheck : faCircleXmark\" size=\"xl\"/>\r\n          </ng-template>\r\n          <ng-template #text>{{ cell }}</ng-template>\r\n        </td>\r\n      </ng-container>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\" class=\"action-button\" (onClick)=\"actionButtonHandler(action.iconName, row)\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconName]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 0\"/>\r\n    {{pageCounter + 1}}. oldal\r\n    <app-button [iconName]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter === Math.floor(data.length / 5)\"/>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconName]=\"faPlus\" (onClick)=\"mainButtonClicked.emit()\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
         },
         {
             "name": "UserListComponent",
-            "id": "component-UserListComponent-be6d1580aee7d140bf0097500b88a7ba0369ef59f8662d868975263d79a9cffad4b73729c49abfb7c784b9d28b813d5e0ce0a6d06feb72f27476d9db928f9ee7",
+            "id": "component-UserListComponent-5260ffd51a62b677721ecafbcd5dfc29fe6374f7bab0f2789975c039ecc59f2857ebd6c394e158758ec6720c15c83d99c44af6bd63a55f949640dc5a840d120f",
             "file": "src/pages/user-list/user-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1355,6 +1937,34 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "faPen",
+                    "defaultValue": "faPen",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "faTrash",
+                    "defaultValue": "faTrash",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
                     "name": "headers",
                     "defaultValue": "[\r\n    {key: 'lastName', displayName: 'Vezetéknév'},\r\n    {key: 'firstName', displayName: 'Keresztnév'},\r\n    {key: 'address', displayName: 'Cím'},\r\n    {key: 'telephone', displayName: 'Telefonszám'},\r\n    {key: 'job', displayName: 'Foglalkozás'},\r\n    {key: 'active', displayName: 'Aktív'},\r\n  ]",
                     "deprecated": false,
@@ -1362,7 +1972,26 @@
                     "type": "Array<literal type>",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 22
+                },
+                {
+                    "name": "isModalOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "selectedUser",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | undefined",
+                    "optional": false,
+                    "description": "",
+                    "line": 43
                 },
                 {
                     "name": "users",
@@ -1372,17 +2001,55 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 21
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "actionButtonHandler",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "addNewUser",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "loadTable",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1406,12 +2073,16 @@
                 {
                     "name": "TableComponent",
                     "type": "component"
+                },
+                {
+                    "name": "ModalComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport {TableComponent} from \"../../components/table/table.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {User} from \"../../../types/User\";\r\nimport {Router} from \"@angular/router\";\r\n\r\n@Component({\r\n  selector: 'app-user-list',\r\n  standalone: true,\r\n  imports: [\r\n    TableComponent\r\n  ],\r\n  templateUrl: './user-list.component.html',\r\n  styleUrl: './user-list.component.scss'\r\n})\r\nexport class UserListComponent implements OnInit {\r\n  users = new Array<User>();\r\n  headers: Array<{ key: string; displayName: string }> = [\r\n    {key: 'lastName', displayName: 'Vezetéknév'},\r\n    {key: 'firstName', displayName: 'Keresztnév'},\r\n    {key: 'address', displayName: 'Cím'},\r\n    {key: 'telephone', displayName: 'Telefonszám'},\r\n    {key: 'job', displayName: 'Foglalkozás'},\r\n    {key: 'active', displayName: 'Aktív'},\r\n  ];\r\n\r\n  constructor(private usersService: UsersService, private router : Router) {\r\n    // console.log(this.usersService.listUsers().subscribe());\r\n    this.usersService.listUsers().subscribe(value => this.users = value._embedded.users);\r\n\r\n  }\r\n    ngOnInit(): void {\r\n    // console.log(this.usersService.listUsers().subscribe());\r\n    //     this.usersService.listUsers().subscribe(value => this.users = value._embedded.users);\r\n        console.log(this.users);\r\n    }\r\n\r\n    addNewUser() {\r\n      this.router.navigateByUrl('create-user');\r\n    }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport {TableComponent} from \"../../components/table/table.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {User} from \"../../../types/User\";\r\nimport {Router} from \"@angular/router\";\r\nimport {faPen, faTrash} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {ModifyUserService} from \"../../services/modify-user.service\";\r\nimport {ModalComponent} from \"../../components/modal/modal.component\";\r\n\r\n@Component({\r\n  selector: 'app-user-list',\r\n  standalone: true,\r\n    imports: [\r\n        TableComponent,\r\n        ModalComponent\r\n    ],\r\n  templateUrl: './user-list.component.html',\r\n  styleUrl: './user-list.component.scss'\r\n})\r\nexport class UserListComponent implements OnInit {\r\n  users = new Array<User>();\r\n  headers: Array<{ key: string; displayName: string }> = [\r\n    {key: 'lastName', displayName: 'Vezetéknév'},\r\n    {key: 'firstName', displayName: 'Keresztnév'},\r\n    {key: 'address', displayName: 'Cím'},\r\n    {key: 'telephone', displayName: 'Telefonszám'},\r\n    {key: 'job', displayName: 'Foglalkozás'},\r\n    {key: 'active', displayName: 'Aktív'},\r\n  ];\r\n\r\n  constructor(private usersService: UsersService, private router : Router, private modifyHelper: ModifyUserService) {}\r\n    ngOnInit(): void {\r\n      this.loadTable();\r\n    }\r\n\r\n    addNewUser() {\r\n      this.router.navigateByUrl('create-user');\r\n    }\r\n\r\n  protected readonly faTrash = faTrash;\r\n  protected readonly faPen = faPen;\r\n  isModalOpen = false;\r\n  selectedUser: User | undefined;\r\n\r\n  actionButtonHandler($event: { iconName: string; user: User }) {\r\n    switch ($event.iconName){\r\n      case 'trash':\r\n        this.selectedUser = $event.user;\r\n        this.isModalOpen = true;\r\n        break;\r\n      case 'pen':\r\n        this.modifyHelper.set($event.user);\r\n        this.router.navigateByUrl('modify-user');\r\n        break;\r\n    }\r\n  }\r\n\r\n  loadTable() {\r\n    this.usersService.listUsers().subscribe(result => {\r\n      // @ts-ignore\r\n      result['content'].forEach(user => {\r\n        delete user.links\r\n        delete user.content\r\n      })\r\n      // @ts-ignore\r\n      this.users = result['content'];\r\n    });\r\n    console.log(this.users);\r\n    this.isModalOpen = false;\r\n  }\r\n}\r\n",
             "styleUrl": "./user-list.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1433,9 +2104,15 @@
                         "type": "Router",
                         "deprecated": false,
                         "deprecationMessage": ""
+                    },
+                    {
+                        "name": "modifyHelper",
+                        "type": "ModifyUserService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
                 ],
-                "line": 25,
+                "line": 29,
                 "jsdoctags": [
                     {
                         "name": "usersService",
@@ -1454,6 +2131,15 @@
                         "tagName": {
                             "text": "param"
                         }
+                    },
+                    {
+                        "name": "modifyHelper",
+                        "type": "ModifyUserService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
                     }
                 ]
             },
@@ -1461,7 +2147,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<app-table [data]=\"users\" (actionButtonClicked)=\"addNewUser()\" [headers]=\"headers\"/>\r\n\r\n{{users}}\r\n"
+            "templateData": "<app-table [data]=\"users\"\r\n           (mainButtonClicked)=\"addNewUser()\"\r\n           [headers]=\"headers\"\r\n           [actionButtons]=\"[faTrash, faPen]\"\r\n           (actionButtonClicked)=\"actionButtonHandler($event)\"\r\n/>\r\n<app-modal [modalData]=\"selectedUser\" [isOpen]=\"isModalOpen\" (onDelete)=\"loadTable()\"/>\r\n"
         }
     ],
     "modules": [],
@@ -1476,6 +2162,16 @@
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
                 "defaultValue": "{\r\n  providers: [provideRouter(routes), provideHttpClient()]\r\n}"
+            },
+            {
+                "name": "jobOptions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/pages/_utils/dropdown-options.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  {value: 'KERTESZ', displayName: 'Kertesz'},\r\n  {value: 'PEK', displayName: 'Pek'},\r\n  {value: 'HENTES', displayName: 'Hentes'}\r\n]"
             }
         ],
         "functions": [],
@@ -1493,6 +2189,18 @@
                     "type": "ApplicationConfig",
                     "defaultValue": "{\r\n  providers: [provideRouter(routes), provideHttpClient()]\r\n}"
                 }
+            ],
+            "src/pages/_utils/dropdown-options.ts": [
+                {
+                    "name": "jobOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/pages/_utils/dropdown-options.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  {value: 'KERTESZ', displayName: 'Kertesz'},\r\n  {value: 'PEK', displayName: 'Pek'},\r\n  {value: 'HENTES', displayName: 'Hentes'}\r\n]"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -1501,7 +2209,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 6,
+        "count": 4,
         "status": "low",
         "files": [
             {
@@ -1547,7 +2255,7 @@
                 "linktype": "component",
                 "name": "DropdownComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -1560,12 +2268,31 @@
                 "status": "low"
             },
             {
+                "filePath": "src/components/modal/modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
                 "filePath": "src/components/table/table.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "TableComponent",
                 "coveragePercent": 12,
-                "coverageCount": "3/24",
+                "coverageCount": "3/25",
+                "status": "low"
+            },
+            {
+                "filePath": "src/pages/_utils/dropdown-options.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "jobOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1574,7 +2301,7 @@
                 "linktype": "component",
                 "name": "CreateUserComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -1583,7 +2310,7 @@
                 "linktype": "component",
                 "name": "ModifyUserComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -1592,7 +2319,16 @@
                 "linktype": "component",
                 "name": "UserListComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "src/services/modify-user.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ModifyUserService",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

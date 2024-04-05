@@ -6,7 +6,7 @@
     <app-input [label]="'Cím'" [control]="address"/>
     <app-input [label]="'Telefon'" [control]="telephone"/>
     <app-dropdown [label]="'Foglalkozás'" [control]="job" [options]="options"/>
-    <app-checkbox/>
+    <app-checkbox [label]="'Aktív'" [control]="active"/>
     <div class="buttons-container">
       <app-button [label]="'Módosítás'" (onClick)="modifyUser()" [disabled]="modifyUserForm.invalid"/>
       <app-button [label]="'Törlés'" [buttonStyle]="'secondary'" (onClick)="openDeleteModal()"/>
