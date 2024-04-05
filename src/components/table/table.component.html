@@ -1,22 +1,26 @@
 <ng-container *ngIf="data.length > 0; then table; else empty"></ng-container>
 <ng-template #table>
-  <app-button [iconName]="faPlus" [label]="'Létrehozás'"/>
+  <app-button [iconName]="faPlus" [label]="'Létrehozás'" (onClick)="mainButtonClicked.emit()"/>
   <table>
     <thead>
     <tr>
-      <th *ngFor="let header of headers"> {{ header }}</th>
+      <th *ngFor="let header of headers"> {{ header.displayName }}</th>
       <th *ngIf="actionButtons" [colSpan]="actionButtons.length" class="actions"> Műveletek</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let row of shownTableData; let i = index" [ngStyle]="{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}">
-      <td *ngFor="let cell of Object.values(row)">
-        <ng-container *ngIf="isBoolean(cell); then checkbox; else text;">{{ cell }}</ng-container>
-        <ng-template #checkbox><fa-icon [icon]="cell ? faCircleCheck : faCircleXmark" size="xl"/></ng-template>
-        <ng-template #text>{{ cell }}</ng-template>
-      </td>
+      <ng-container *ngFor="let cell of Object.values(row); let j = index">
+        <td *ngIf="isColumnNeeded(Object.keys(row)[j])">
+          <ng-container *ngIf="isBoolean(cell); then checkbox; else text;">{{ cell }}</ng-container>
+          <ng-template #checkbox>
+            <fa-icon [icon]="cell ? faCircleCheck : faCircleXmark" size="xl"/>
+          </ng-template>
+          <ng-template #text>{{ cell }}</ng-template>
+        </td>
+      </ng-container>
       <td *ngFor="let action of actionButtons">
-        <app-button [iconName]="action" class="action-button"/>
+        <app-button [iconName]="action" class="action-button" (onClick)="actionButtonHandler(action.iconName, row)"/>
       </td>
     </tr>
     </tbody>
@@ -33,6 +37,6 @@
     <fa-icon [icon]="faFaceSadCry" size="8x"/>
     <b class="title">Nincs felhasználó</b>
     <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>
-    <app-button [label]="'Új felhasználó hozzáadása'" [iconName]="faPlus"></app-button>
+    <app-button [label]="'Új felhasználó hozzáadása'" [iconName]="faPlus" (onClick)="mainButtonClicked.emit()"></app-button>
   </div>
 </ng-template>
