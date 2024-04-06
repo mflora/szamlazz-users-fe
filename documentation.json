@@ -411,7 +411,7 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-97446ffc2058e1a9cd7e31645a89ab7518292e7c1ff53e5c32a38fa96d0f9a620d11857de0b8a3e2646b83090a0610ffcb653991c1104643ae7acd0a5ac086bf",
+            "id": "component-CheckboxComponent-5996593aa3afc13031f1b1224025ffe7c91a9c0a1eaba642fa81e5934d37ecc1f94f68413dcb2614d2f485a6462b2e9e367ae16bd53d30d89d6de22194812a73",
             "file": "src/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -432,8 +432,26 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 15,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "control",
+                    "defaultValue": "new FormControl(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
                     "decorators": []
                 }
             ],
@@ -443,7 +461,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 22,
                     "type": "EventEmitter"
                 }
             ],
@@ -455,7 +473,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -465,17 +483,60 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss'\r\n})\r\nexport class CheckboxComponent {\r\n  @Input()\r\n  checked = false;\r\n\r\n  @Output()\r\n  onCheckedChange = new EventEmitter<boolean>();\r\n\r\n  checkedChange() {\r\n    this.checked = ! this.checked;\r\n    this.onCheckedChange.emit(this.checked);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss'\r\n})\r\nexport class CheckboxComponent {\r\n  @Input()\r\n  checked = false;\r\n  @Input()\r\n  label= '';\r\n  @Input()\r\n  control = new FormControl(false);\r\n\r\n  @Output()\r\n  onCheckedChange = new EventEmitter<boolean>();\r\n\r\n  checkedChange() {\r\n    this.checked = ! this.checked;\r\n    this.onCheckedChange.emit(this.checked);\r\n  }\r\n\r\n  get value(): boolean{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: boolean) {\r\n    this.control.setValue(val);\r\n    this.onCheckedChange.emit(val);\r\n  }\r\n}\r\n",
             "styleUrl": "./checkbox.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<input type=\"checkbox\" [checked]=\"checked\" (change)=\"checkedChange()\"/>\r\n"
+            "accessors": {
+                "value": {
+                    "name": "value",
+                    "setSignature": {
+                        "name": "value",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "boolean",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 33,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "boolean",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "value",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 29
+                    }
+                }
+            },
+            "templateData": "<div class=\"checkbox-container\">\r\n  <input [formControl]=\"control\" type=\"checkbox\" (change)=\"checkedChange()\"/>\r\n  <div class=\"checkbox-label\">{{label}}</div>\r\n</div>\r\n"
         },
         {
             "name": "CreateUserComponent",
@@ -685,7 +746,7 @@
         },
         {
             "name": "DropdownComponent",
-            "id": "component-DropdownComponent-a6e67bb3f5a09b698fbc0b04f922345ae9858b90d55bf8834b5c0026fdda28283379e01da8ca269b29eba608f935abb087ac63214c301f60a541eafef62a5365",
+            "id": "component-DropdownComponent-ca61c8726d71b59018bc12ffb3cf36aa01ed3c256c54550bd73ded2e7fee35c5112c4f5f56c81baaf6187b7358f5b41108055548cd010f218a1745d7db103253",
             "file": "src/components/dropdown/dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -706,7 +767,7 @@
                     "defaultValue": "new FormControl('')",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 28,
                     "type": "any",
                     "decorators": []
                 },
@@ -715,7 +776,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
@@ -724,7 +785,7 @@
                     "defaultValue": "new Array<{value: string, displayName: string}>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 22,
                     "type": "any",
                     "decorators": []
                 }
@@ -735,11 +796,46 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 25,
                     "type": "EventEmitter"
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "faChevronDown",
+                    "defaultValue": "faChevronDown",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "isModalOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "selectedValueDisplay",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "selectionChange",
@@ -754,7 +850,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -768,6 +864,44 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "setDropdownValue",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleDropdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 }
             ],
             "deprecated": false,
@@ -783,12 +917,16 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "FaIconComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {CommonModule} from \"@angular/common\";\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    CommonModule\r\n  ],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss'\r\n})\r\nexport class DropdownComponent {\r\n  @Input()\r\n  label = '';\r\n  @Input()\r\n  options = new Array<{value: string, displayName: string}>();\r\n\r\n  @Output()\r\n  onSelectionChange = new EventEmitter<string>();\r\n\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  selectionChange(value: string) {\r\n    this.onSelectionChange.emit(value);\r\n  }\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.onSelectionChange.emit(val);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faChevronDown} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    CommonModule,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss'\r\n})\r\nexport class DropdownComponent {\r\n  @Input()\r\n  label = '';\r\n  @Input()\r\n  options = new Array<{value: string, displayName: string}>();\r\n\r\n  @Output()\r\n  onSelectionChange = new EventEmitter<string>();\r\n\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  isModalOpen = false;\r\n  selectedValueDisplay = '';\r\n\r\n  selectionChange(value: string) {\r\n    this.onSelectionChange.emit(value);\r\n  }\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.onSelectionChange.emit(val);\r\n  }\r\n\r\n  protected readonly faChevronDown = faChevronDown;\r\n\r\n  toggleDropdown() {\r\n    this.isModalOpen = !this.isModalOpen;\r\n  }\r\n\r\n  setDropdownValue(option: { value: string; displayName: string }) {\r\n    this.selectedValueDisplay = option.displayName;\r\n    this.value = option.value;\r\n    this.isModalOpen = false;\r\n  }\r\n}\r\n",
             "styleUrl": "./dropdown.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -811,7 +949,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 35,
+                        "line": 41,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -828,11 +966,11 @@
                         "name": "value",
                         "type": "string",
                         "returnType": "string",
-                        "line": 31
+                        "line": 37
                     }
                 }
             },
-            "templateData": "<div class=\"input-container\" [ngClass]=\"control.invalid && control.touched ? 'invalid-input' : ''\">\r\n  <div>{{label}}</div>\r\n  <select #dropdown [formControl]=\"control\" (change)=\"selectionChange(dropdown.value)\">\r\n    <option *ngFor=\"let opt of options\" [value]=\"opt.value\">{{ opt.displayName }}</option>\r\n  </select>\r\n</div>\r\n<div class=\"error-messages\">\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['required']\">A mező kitöltése kötelező</div>\r\n</div>\r\n"
+            "templateData": "<!--<div class=\"input-container\" [ngClass]=\"control.invalid && control.touched ? 'invalid-input' : ''\">-->\r\n<!--  <div>{{label}}</div>-->\r\n<!--  <select #dropdown [formControl]=\"control\" (change)=\"selectionChange(dropdown.value)\">-->\r\n<!--    <option *ngFor=\"let opt of options\" [value]=\"opt.value\" class=\"option\">{{ opt.displayName }}</option>-->\r\n<!--  </select>-->\r\n<!--</div>-->\r\n<!--<div class=\"error-messages\">-->\r\n<!--  <div *ngIf=\"control.invalid && control.touched && control.errors?.['required']\">A mező kitöltése kötelező</div>-->\r\n<!--</div>-->\r\n\r\n<div class=\"custom-select\" [ngClass]=\"[isModalOpen ? 'active' : '', control.invalid && control.touched ? 'invalid-input' : '']\" >\r\n  <button\r\n    class=\"select-button\"\r\n    role=\"combobox\"\r\n    aria-labelledby=\"select button\"\r\n    aria-haspopup=\"listbox\"\r\n    aria-expanded=\"false\"\r\n    aria-controls=\"select-dropdown\"\r\n    (click)=\"toggleDropdown()\"\r\n  >\r\n    <input [formControl]=\"control\" #dropdown class=\"selected-value\" [value]=\"selectedValueDisplay\"/>\r\n    <span class=\"arrow\"><fa-icon [icon]=\"faChevronDown\" [size]=\"'xs'\"/></span>\r\n  </button>\r\n  <ul\r\n    class=\"select-dropdown\"\r\n    role=\"listbox\"\r\n    id=\"select-dropdown\"\r\n  >\r\n    <li *ngFor=\"let option of options\" role=\"option\" (click)=\"setDropdownValue(option)\">\r\n      <input type=\"radio\" [id]=\"option.value\" name=\"job\" />\r\n      <label [for]=\"option.value\">{{ option.displayName }}</label>\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
         },
         {
             "name": "InputComponent",
@@ -1515,11 +1653,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"modifyUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <app-checkbox/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Módosítás'\" (onClick)=\"modifyUser()\" [disabled]=\"modifyUserForm.invalid\"/>\r\n      <app-button [label]=\"'Törlés'\" [buttonStyle]=\"'secondary'\" (onClick)=\"openDeleteModal()\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<app-modal [modalData]=\"userInfo\" [isOpen]=\"isModalOpen\"/>\r\n\r\n"
+            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"modifyUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <app-checkbox [label]=\"'Aktív'\" [control]=\"active\"/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Módosítás'\" (onClick)=\"modifyUser()\" [disabled]=\"modifyUserForm.invalid\"/>\r\n      <app-button [label]=\"'Törlés'\" [buttonStyle]=\"'secondary'\" (onClick)=\"openDeleteModal()\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<app-modal [modalData]=\"userInfo\" [isOpen]=\"isModalOpen\"/>\r\n\r\n"
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-6fa336beea79517d7d889b7c102e2b2c8898a2853ced00c5cc600c96e43033ad2a1dcfecee1e47715e3d4729226704f4139a8dc7aa009e0d033acd374654f33b",
+            "id": "component-TableComponent-bc6cd64b09cff2840e32250c5108fb0a679a85f13976fb81aba29714edcfde398f7beba10e912b75a50f1f451cfde21b38e3777c134210d278025554d702c462",
             "file": "src/components/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1596,7 +1734,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 85,
+                    "line": 102,
                     "modifierKind": [
                         124,
                         148
@@ -1610,7 +1748,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 86,
+                    "line": 103,
                     "modifierKind": [
                         124,
                         148
@@ -1624,7 +1762,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 101,
+                    "line": 98,
                     "modifierKind": [
                         124,
                         148
@@ -1638,7 +1776,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 102,
+                    "line": 99,
                     "modifierKind": [
                         124,
                         148
@@ -1652,7 +1790,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 84,
+                    "line": 101,
                     "modifierKind": [
                         124,
                         148
@@ -1666,7 +1804,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 83,
+                    "line": 100,
                     "modifierKind": [
                         124,
                         148
@@ -1680,7 +1818,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 69
+                    "line": 68
                 },
                 {
                     "name": "headerKeys",
@@ -1700,7 +1838,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 80
+                    "line": 75
                 },
                 {
                     "name": "Math",
@@ -1710,21 +1848,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 100,
-                    "modifierKind": [
-                        124,
-                        148
-                    ]
-                },
-                {
-                    "name": "Object",
-                    "defaultValue": "Object",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 82,
+                    "line": 97,
                     "modifierKind": [
                         124,
                         148
@@ -1732,7 +1856,7 @@
                 },
                 {
                     "name": "pageCounter",
-                    "defaultValue": "0",
+                    "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -1801,30 +1925,45 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 93,
+                    "line": 84,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "isColumnNeeded",
+                    "name": "findCell",
                     "args": [
                         {
-                            "name": "key",
+                            "name": "headerCell",
                             "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "row",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
                     ],
                     "optional": false,
-                    "returnType": "boolean",
+                    "returnType": "string",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "key",
+                            "name": "headerCell",
                             "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "row",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1849,7 +1988,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1866,7 +2005,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 88,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1904,7 +2043,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faCircleCheck, faCircleXmark, faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\nimport {User} from \"../../../types/User\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnChanges, OnInit {\r\n\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  /**\r\n   * Emits an event when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  mainButtonClicked = new EventEmitter();\r\n\r\n  @Output()\r\n  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();\r\n\r\n  @Input()\r\n  headers: Array<{ key: string, displayName: string }>= [];\r\n\r\n  headerKeys = new Array<string>();\r\n  pageCounter = 0;\r\n  shownTableData: Array<object> = [];\r\n\r\n  actionButtonHandler(iconName: string, user: object){\r\n    this.actionButtonClicked.emit({iconName: iconName, user: user as User});\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.calculateTable();\r\n    console.log(this.data);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    if(!this.headers) {\r\n      this.headers = this.getHeaders();\r\n    } else {\r\n      this.headerKeys = this.headers.map(header => {\r\n        return header.key;\r\n      });\r\n    }\r\n  }\r\n\r\n  getHeaders = () => {\r\n    this.headerKeys = Object.keys(this.data[0]);\r\n    return Object.keys(this.data[0] ?? []).map(item =>{\r\n      return {key: item, displayName: item}\r\n    });\r\n  }\r\n\r\n  isColumnNeeded(key: string): boolean {\r\n    return !!this.headerKeys.find(headerKey => headerKey === key);\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  protected readonly Object = Object;\r\n  protected readonly faPlus = faPlus;\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  protected readonly faChevronRight = faChevronRight;\r\n\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  calculateTable() {\r\n    const starterIndex = this.pageCounter * 5;\r\n    this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);\r\n  }\r\n\r\n\r\n\r\n  protected readonly Math = Math;\r\n  protected readonly faCircleCheck = faCircleCheck;\r\n  protected readonly faCircleXmark = faCircleXmark;\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faCircleCheck, faCircleXmark, faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\nimport {User} from \"../../../types/User\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnChanges, OnInit {\r\n\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  /**\r\n   * Emits an event when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  mainButtonClicked = new EventEmitter();\r\n\r\n  @Output()\r\n  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();\r\n\r\n  @Input()\r\n  headers: Array<{ key: string, displayName: string }>= [];\r\n\r\n  headerKeys = new Array<string>();\r\n  pageCounter = 1;\r\n  shownTableData: Array<object> = [];\r\n\r\n  actionButtonHandler(iconName: string, user: object){\r\n    this.actionButtonClicked.emit({iconName: iconName, user: user as User});\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.calculateTable();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    if(!this.headers) {\r\n      this.headers = this.getHeaders();\r\n    } else {\r\n      this.headerKeys = this.headers.map(header => {\r\n        return header.key;\r\n      });\r\n    }\r\n  }\r\n\r\n  getHeaders = () => {\r\n    this.headerKeys = Object.keys(this.data[0]);\r\n    return Object.keys(this.data[0] ?? []).map(item =>{\r\n      return {key: item, displayName: item}\r\n    });\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n\r\n\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  calculateTable() {\r\n    if(this.data.length !== 0 && this.pageCounter > Math.ceil(this.data.length / 5)) {\r\n      --this.pageCounter;\r\n    }\r\n\r\n    const starterIndex = (this.pageCounter -1) * 5;\r\n    this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);\r\n  }\r\n\r\n  findCell(headerCell: string, row: any): string {\r\n    return row[headerCell];\r\n  }\r\n\r\n  protected readonly Math = Math;\r\n  protected readonly faCircleCheck = faCircleCheck;\r\n  protected readonly faCircleXmark = faCircleXmark;\r\n  protected readonly faPlus = faPlus;\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  protected readonly faChevronRight = faChevronRight;\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1914,11 +2053,11 @@
                 "OnChanges",
                 "OnInit"
             ],
-            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconName]=\"faPlus\" [label]=\"'Létrehozás'\" (onClick)=\"mainButtonClicked.emit()\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header.displayName }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of shownTableData; let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <ng-container *ngFor=\"let cell of Object.values(row); let j = index\">\r\n        <td *ngIf=\"isColumnNeeded(Object.keys(row)[j])\">\r\n          <ng-container *ngIf=\"isBoolean(cell); then checkbox; else text;\">{{ cell }}</ng-container>\r\n          <ng-template #checkbox>\r\n            <fa-icon [icon]=\"cell ? faCircleCheck : faCircleXmark\" size=\"xl\"/>\r\n          </ng-template>\r\n          <ng-template #text>{{ cell }}</ng-template>\r\n        </td>\r\n      </ng-container>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\" class=\"action-button\" (onClick)=\"actionButtonHandler(action.iconName, row)\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconName]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 0\"/>\r\n    {{pageCounter + 1}}. oldal\r\n    <app-button [iconName]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter === Math.floor(data.length / 5)\"/>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconName]=\"faPlus\" (onClick)=\"mainButtonClicked.emit()\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
+            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconName]=\"faPlus\" [label]=\"'Létrehozás'\" (onClick)=\"mainButtonClicked.emit()\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header.displayName }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of shownTableData; let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <td *ngFor=\"let headerCell of headers\">\r\n        <ng-container *ngIf=\"isBoolean(findCell(headerCell.key, row)); then checkbox; else text;\"></ng-container>\r\n        <ng-template #checkbox>\r\n          <fa-icon [icon]=\"findCell(headerCell.key, row) ? faCircleCheck : faCircleXmark\" size=\"xl\"/>\r\n        </ng-template>\r\n        <ng-template #text>\r\n          {{ findCell(headerCell.key, row) }}\r\n        </ng-template>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\" class=\"action-button\" (onClick)=\"actionButtonHandler(action.iconName, row)\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconName]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 1\"/>\r\n    {{pageCounter}}. oldal\r\n    <app-button [iconName]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter >= data.length / 5\"/>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconName]=\"faPlus\" (onClick)=\"mainButtonClicked.emit()\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
         },
         {
             "name": "UserListComponent",
-            "id": "component-UserListComponent-5260ffd51a62b677721ecafbcd5dfc29fe6374f7bab0f2789975c039ecc59f2857ebd6c394e158758ec6720c15c83d99c44af6bd63a55f949640dc5a840d120f",
+            "id": "component-UserListComponent-222cc882b50e58a0fe9bf966a7f85372ff33c3fc059d2bea4816df053d44b124805f869f0472f00256de4adab91c086f669fcc17ca4a9855a59d1234f7063145",
             "file": "src/pages/user-list/user-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2082,7 +2221,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport {TableComponent} from \"../../components/table/table.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {User} from \"../../../types/User\";\r\nimport {Router} from \"@angular/router\";\r\nimport {faPen, faTrash} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {ModifyUserService} from \"../../services/modify-user.service\";\r\nimport {ModalComponent} from \"../../components/modal/modal.component\";\r\n\r\n@Component({\r\n  selector: 'app-user-list',\r\n  standalone: true,\r\n    imports: [\r\n        TableComponent,\r\n        ModalComponent\r\n    ],\r\n  templateUrl: './user-list.component.html',\r\n  styleUrl: './user-list.component.scss'\r\n})\r\nexport class UserListComponent implements OnInit {\r\n  users = new Array<User>();\r\n  headers: Array<{ key: string; displayName: string }> = [\r\n    {key: 'lastName', displayName: 'Vezetéknév'},\r\n    {key: 'firstName', displayName: 'Keresztnév'},\r\n    {key: 'address', displayName: 'Cím'},\r\n    {key: 'telephone', displayName: 'Telefonszám'},\r\n    {key: 'job', displayName: 'Foglalkozás'},\r\n    {key: 'active', displayName: 'Aktív'},\r\n  ];\r\n\r\n  constructor(private usersService: UsersService, private router : Router, private modifyHelper: ModifyUserService) {}\r\n    ngOnInit(): void {\r\n      this.loadTable();\r\n    }\r\n\r\n    addNewUser() {\r\n      this.router.navigateByUrl('create-user');\r\n    }\r\n\r\n  protected readonly faTrash = faTrash;\r\n  protected readonly faPen = faPen;\r\n  isModalOpen = false;\r\n  selectedUser: User | undefined;\r\n\r\n  actionButtonHandler($event: { iconName: string; user: User }) {\r\n    switch ($event.iconName){\r\n      case 'trash':\r\n        this.selectedUser = $event.user;\r\n        this.isModalOpen = true;\r\n        break;\r\n      case 'pen':\r\n        this.modifyHelper.set($event.user);\r\n        this.router.navigateByUrl('modify-user');\r\n        break;\r\n    }\r\n  }\r\n\r\n  loadTable() {\r\n    this.usersService.listUsers().subscribe(result => {\r\n      // @ts-ignore\r\n      result['content'].forEach(user => {\r\n        delete user.links\r\n        delete user.content\r\n      })\r\n      // @ts-ignore\r\n      this.users = result['content'];\r\n    });\r\n    console.log(this.users);\r\n    this.isModalOpen = false;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport {TableComponent} from \"../../components/table/table.component\";\r\nimport {UsersService} from \"../../services/users.service\";\r\nimport {User} from \"../../../types/User\";\r\nimport {Router} from \"@angular/router\";\r\nimport {faPen, faTrash} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {ModifyUserService} from \"../../services/modify-user.service\";\r\nimport {ModalComponent} from \"../../components/modal/modal.component\";\r\n\r\n@Component({\r\n  selector: 'app-user-list',\r\n  standalone: true,\r\n    imports: [\r\n        TableComponent,\r\n        ModalComponent\r\n    ],\r\n  templateUrl: './user-list.component.html',\r\n  styleUrl: './user-list.component.scss'\r\n})\r\nexport class UserListComponent implements OnInit {\r\n  users = new Array<User>();\r\n  headers: Array<{ key: string; displayName: string }> = [\r\n    {key: 'lastName', displayName: 'Vezetéknév'},\r\n    {key: 'firstName', displayName: 'Keresztnév'},\r\n    {key: 'address', displayName: 'Cím'},\r\n    {key: 'telephone', displayName: 'Telefonszám'},\r\n    {key: 'job', displayName: 'Foglalkozás'},\r\n    {key: 'active', displayName: 'Aktív'},\r\n  ];\r\n\r\n  constructor(private usersService: UsersService, private router : Router, private modifyHelper: ModifyUserService) {}\r\n    ngOnInit(): void {\r\n      this.loadTable();\r\n    }\r\n\r\n    addNewUser() {\r\n      this.router.navigateByUrl('create-user');\r\n    }\r\n\r\n  protected readonly faTrash = faTrash;\r\n  protected readonly faPen = faPen;\r\n  isModalOpen = false;\r\n  selectedUser: User | undefined;\r\n\r\n  actionButtonHandler($event: { iconName: string; user: User }) {\r\n    switch ($event.iconName){\r\n      case 'trash':\r\n        this.selectedUser = $event.user;\r\n        this.isModalOpen = true;\r\n        break;\r\n      case 'pen':\r\n        this.modifyHelper.set($event.user);\r\n        this.router.navigateByUrl('modify-user');\r\n        break;\r\n    }\r\n  }\r\n\r\n  loadTable() {\r\n    this.usersService.listUsers().subscribe(result => {\r\n      this.users = result['content'].filter((row: User) => row.id);\r\n    });\r\n    this.isModalOpen = false;\r\n  }\r\n}\r\n",
             "styleUrl": "./user-list.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2246,7 +2385,7 @@
                 "linktype": "component",
                 "name": "CheckboxComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -2255,7 +2394,7 @@
                 "linktype": "component",
                 "name": "DropdownComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -2282,7 +2421,7 @@
                 "linktype": "component",
                 "name": "TableComponent",
                 "coveragePercent": 12,
-                "coverageCount": "3/25",
+                "coverageCount": "3/24",
                 "status": "low"
             },
             {

@@ -1,9 +1,32 @@
-<div class="input-container" [ngClass]="control.invalid && control.touched ? 'invalid-input' : ''">
-  <div>{{label}}</div>
-  <select #dropdown [formControl]="control" (change)="selectionChange(dropdown.value)">
-    <option *ngFor="let opt of options" [value]="opt.value">{{ opt.displayName }}</option>
-  </select>
+<div class="input-container" [ngClass]="[isModalOpen ? 'active' : '', control.invalid && control.touched ? 'invalid-input' : '']" >
+
+  <button
+    class="select-button"
+    role="combobox"
+    aria-labelledby="select button"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-controls="select-dropdown"
+    (click)="toggleDropdown()"
+  >
+    <div class="dropdown-input">
+      <div class="dropdown-label">{{ label }}</div>
+      <input [formControl]="control" #dropdown class="selected-value" [value]="selectedValueDisplay" readonly/>
+    </div>
+    <span class="arrow"><fa-icon [icon]="faChevronDown" [size]="'xs'"/></span>
+  </button>
+  <ul
+    class="select-dropdown"
+    role="listbox"
+    id="select-dropdown"
+  >
+    <li *ngFor="let option of options" role="option" (click)="setDropdownValue(option)">
+      <input type="radio" [id]="option.value" name="job" />
+      <label [for]="option.value">{{ option.displayName }}</label>
+    </li>
+  </ul>
 </div>
 <div class="error-messages">
   <div *ngIf="control.invalid && control.touched && control.errors?.['required']">A mező kitöltése kötelező</div>
 </div>
+<div class="overlay" (click)="isModalOpen=false" *ngIf="isModalOpen"></div>
