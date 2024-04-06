@@ -1,4 +1,4 @@
-<div class="input-container" [ngClass]="[isModalOpen ? 'active' : '', control.invalid && control.touched ? 'invalid-input' : '']" >
+<div class="input-container" [ngClass]="[isDropdownOpen ? 'active' : '', control.invalid && control.touched ? 'invalid-input' : '']" >
 
   <button
     class="select-button"
@@ -29,4 +29,4 @@
 <div class="error-messages">
   <div *ngIf="control.invalid && control.touched && control.errors?.['required']">A mező kitöltése kötelező</div>
 </div>
-<div class="overlay" (click)="isModalOpen=false" *ngIf="isModalOpen"></div>
+<div class="overlay" (click)="isDropdownOpen=false" *ngIf="isDropdownOpen"></div>

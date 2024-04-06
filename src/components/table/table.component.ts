@@ -18,35 +18,48 @@ import {User} from "../../../types/User";
   styleUrl: './table.component.scss'
 })
 export class TableComponent implements OnChanges, OnInit {
-
   /**
    * The data of the table
    * */
   @Input()
   data: Array<object> = [];
-
   /**
    * Array of the buttons needed for the table actions.
    */
   @Input()
   actionButtons: Array<IconDefinition> | null = null;
-
   /**
-   * Emits an event when one of the action buttons are clicked.
+   * Defines which of the columns should be displayed. If unset, it will contain all the columns of the data array's firs item.
    */
-  @Output()
-  mainButtonClicked = new EventEmitter();
-
-  @Output()
-  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();
-
   @Input()
   headers: Array<{ key: string, displayName: string }>= [];
 
+  /**
+   * Event firing when one of the action buttons are clicked.
+   */
+  @Output()
+  mainButtonClicked = new EventEmitter();
+  /**
+   * Event firing when one of the action buttons are clicked.
+   */
+  @Output()
+  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();
+  /**
+   * Keys of the headers array.
+   */
   headerKeys = new Array<string>();
+  /**
+   * Index of the current page.
+   */
   pageCounter = 1;
+  /**
+   * Currently displayed subset of the data array.
+   */
   shownTableData: Array<object> = [];
 
+  /**
+   * Handler function for click any of the action buttons
+   * */
   actionButtonHandler(iconName: string, user: object){
     this.actionButtonClicked.emit({iconName: iconName, user: user as User});
   }
@@ -56,7 +69,7 @@ export class TableComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.headers) {
+    if(this.headers.length === 0) {
       this.headers = this.getHeaders();
     } else {
       this.headerKeys = this.headers.map(header => {
@@ -65,6 +78,9 @@ export class TableComponent implements OnChanges, OnInit {
     }
   }
 
+  /**
+   * Helper function which helps calculate the headers array if it's unset by the parent component
+   * */
   getHeaders = () => {
     this.headerKeys = Object.keys(this.data[0]);
     return Object.keys(this.data[0] ?? []).map(item =>{
@@ -72,15 +88,22 @@ export class TableComponent implements OnChanges, OnInit {
     });
   }
 
+  /**
+   * Helper function which helps decide whether a value's type is boolean or not.
+   * */
   isBoolean = (value: any) =>  {return typeof value === 'boolean'}
 
-
-
+  /**
+   * Helper function for turning to the next or the previous page of the table.
+   * */
   turnPage(pageNumber: number) {
     this.pageCounter += pageNumber;
     this.calculateTable();
   }
 
+  /**
+   * Helper function which helps to fill the shownTableData property.
+   * */
   calculateTable() {
     if(this.data.length !== 0 && this.pageCounter > Math.ceil(this.data.length / 5)) {
       --this.pageCounter;
@@ -90,15 +113,39 @@ export class TableComponent implements OnChanges, OnInit {
     this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);
   }
 
+  /**
+   * Helper function which returns the cell by headerKey
+   * */
   findCell(headerCell: string, row: any): string {
     return row[headerCell];
   }
 
+  /**
+   * Icon for the table
+   * */
   protected readonly Math = Math;
+  /**
+   * Icon for the table
+   * */
   protected readonly faCircleCheck = faCircleCheck;
+  /**
+   * Icon for the table
+   * */
   protected readonly faCircleXmark = faCircleXmark;
+  /**
+   * Icon for the table
+   * */
   protected readonly faPlus = faPlus;
+  /**
+   * Icon for the table
+   * */
   protected readonly faFaceSadCry = faFaceSadCry;
+  /**
+   * Icon for the table
+   * */
   protected readonly faChevronLeft = faChevronLeft;
+  /**
+   * Icon for the table
+   * */
   protected readonly faChevronRight = faChevronRight;
 }

@@ -299,7 +299,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-19b6ebac3556126b38d664947c8f5334dd8d56c1b2c9da5def28489f2434acf38134bdc1346c6ff0245eb504b626b5deb3d559fc937dc7428701cb451e0b62d3",
+            "id": "component-ButtonComponent-6ea38dfe903e05aa1f81bd03b71e7d7982ec1d6a206a4d58a291487cf0b23f686b74102c2feadc32b3d09daa736b5aef74de1e629f4ecc0f8c535e83bf96a750",
             "file": "src/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -322,7 +322,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe color schema of the button\n",
                     "description": "<p>The color schema of the button</p>\n",
-                    "line": 40,
+                    "line": 34,
                     "type": "\"primary\" | \"secondary\" | \"secondary-ghost\"",
                     "decorators": []
                 },
@@ -331,18 +331,20 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
+                    "rawdescription": "\n\nSpecifies whether is the button disabled or not.\n",
+                    "description": "<p>Specifies whether is the button disabled or not.</p>\n",
+                    "line": 40,
                     "type": "boolean",
                     "decorators": []
                 },
                 {
-                    "name": "iconName",
+                    "name": "iconDefinition",
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nName of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\n",
-                    "description": "<p>Name of the FontAwesomeIcon you can find the icons here: <a href=\"https://fontawesome.com/icons\">https://fontawesome.com/icons</a></p>\n",
-                    "line": 34,
+                    "rawdescription": "\n\nDefinition of the FontAwesomeIcon. Accepts free FontAwesome icons. Find all the icons here: https://fontawesome.com/icons\n",
+                    "description": "<p>Definition of the FontAwesomeIcon. Accepts free FontAwesome icons. Find all the icons here: <a href=\"https://fontawesome.com/icons\">https://fontawesome.com/icons</a></p>\n",
+                    "line": 28,
                     "type": "IconDefinition | null",
                     "decorators": []
                 },
@@ -351,8 +353,8 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nThis string will appear as the button's label. If empty, an icon button will appear.\n",
-                    "description": "<p>This string will appear as the button&#39;s label. If empty, an icon button will appear.</p>\n",
+                    "rawdescription": "\n\nThe button's label. If empty, an icon button will appear.\n",
+                    "description": "<p>The button&#39;s label. If empty, an icon button will appear.</p>\n",
                     "line": 22,
                     "type": "string",
                     "decorators": []
@@ -362,6 +364,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nBasic HTML <button> tag type.\n",
+                    "description": "<p>Basic HTML <button> tag type.</p>\n",
                     "line": 46,
                     "type": "\"button\" | \"submit\" | \"reset\"",
                     "decorators": []
@@ -375,7 +379,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nClick event for the button.\n",
                     "description": "<p>Click event for the button.</p>\n",
-                    "line": 28,
+                    "line": 52,
                     "type": "EventEmitter"
                 }
             ],
@@ -401,17 +405,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport { IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    NgClass,\r\n    FaIconComponent,\r\n    NgIf\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * This string will appear as the button's label. If empty, an icon button will appear.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n\r\n  /**\r\n   * Click event for the button.\r\n   * */\r\n  @Output()\r\n  onClick = new EventEmitter();\r\n\r\n  /**\r\n   * Name of the FontAwesomeIcon you can find the icons here: https://fontawesome.com/icons\r\n   * */\r\n  @Input()\r\n  iconName:IconDefinition | null = null;\r\n\r\n  /**\r\n   * The color schema of the button\r\n   */\r\n  @Input()\r\n  buttonStyle: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'\r\n\r\n  @Input()\r\n  disabled = false;\r\n\r\n  @Input()\r\n  type: 'button' | 'submit' | 'reset' = 'button'\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport { IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    NgClass,\r\n    FaIconComponent,\r\n    NgIf\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  /**\r\n   * The button's label. If empty, an icon button will appear.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n\r\n  /**\r\n   * Definition of the FontAwesomeIcon. Accepts free FontAwesome icons. Find all the icons here: https://fontawesome.com/icons\r\n   * */\r\n  @Input()\r\n  iconDefinition:IconDefinition | null = null;\r\n\r\n  /**\r\n   * The color schema of the button\r\n   */\r\n  @Input()\r\n  buttonStyle: 'primary' | 'secondary' | 'secondary-ghost' = 'primary'\r\n\r\n  /**\r\n   * Specifies whether is the button disabled or not.\r\n   */\r\n  @Input()\r\n  disabled = false;\r\n\r\n  /**\r\n   * Basic HTML <button> tag type.\r\n   */\r\n  @Input()\r\n  type: 'button' | 'submit' | 'reset' = 'button'\r\n\r\n  /**\r\n   * Click event for the button.\r\n   * */\r\n  @Output()\r\n  onClick = new EventEmitter();\r\n}\r\n",
             "styleUrl": "./button.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<button (click)=\"onClick.emit()\"\r\n        class=\"btn-container\"\r\n        [ngClass]=\"[label ? buttonStyle : 'icon-button']\"\r\n        [disabled]=\"disabled\"\r\n        [type]=\"type\"\r\n>\r\n  <fa-icon *ngIf=\"iconName !== null\" [icon]=\"iconName\" class=\"icon\"></fa-icon>{{label}}\r\n</button>\r\n\r\n\r\n"
+            "templateData": "<button (click)=\"onClick.emit()\"\r\n        class=\"btn-container\"\r\n        [ngClass]=\"[label ? buttonStyle : 'icon-button']\"\r\n        [disabled]=\"disabled\"\r\n        [type]=\"type\"\r\n>\r\n  <fa-icon *ngIf=\"iconDefinition !== null\" [icon]=\"iconDefinition\" class=\"icon\"></fa-icon>{{label}}\r\n</button>\r\n\r\n\r\n"
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-5996593aa3afc13031f1b1224025ffe7c91a9c0a1eaba642fa81e5934d37ecc1f94f68413dcb2614d2f485a6462b2e9e367ae16bd53d30d89d6de22194812a73",
+            "id": "component-CheckboxComponent-9199cafa72618cc1084586a2d1fb06c89b4c5434afcc65f134d6851d3378f8e71dca3f3cf423a596d1ab36b9d50840372b34d4927df6a502dc3be30686e3e6db",
             "file": "src/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -432,7 +436,9 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "rawdescription": "\n\nSets the checkbox checked or unchecked\n",
+                    "description": "<p>Sets the checkbox checked or unchecked</p>\n",
+                    "line": 19,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -441,7 +447,9 @@
                     "defaultValue": "new FormControl(false)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "rawdescription": "\n\nFormControl for the checkbox to use ReactiveForms.\n",
+                    "description": "<p>FormControl for the checkbox to use ReactiveForms.</p>\n",
+                    "line": 29,
                     "type": "any",
                     "decorators": []
                 },
@@ -450,7 +458,9 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "rawdescription": "\n\nThe label which appears nex to the checkbox.\n",
+                    "description": "<p>The label which appears nex to the checkbox.</p>\n",
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 }
@@ -461,7 +471,9 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "rawdescription": "\n\nEvent firing when the checked value changes.\n",
+                    "description": "<p>Event firing when the checked value changes.</p>\n",
+                    "line": 35,
                     "type": "EventEmitter"
                 }
             ],
@@ -473,9 +485,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 40,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHandler function for the checked value change.\n",
+                    "description": "<p>Handler function for the checked value change.</p>\n"
                 }
             ],
             "deprecated": false,
@@ -492,7 +506,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss'\r\n})\r\nexport class CheckboxComponent {\r\n  @Input()\r\n  checked = false;\r\n  @Input()\r\n  label= '';\r\n  @Input()\r\n  control = new FormControl(false);\r\n\r\n  @Output()\r\n  onCheckedChange = new EventEmitter<boolean>();\r\n\r\n  checkedChange() {\r\n    this.checked = ! this.checked;\r\n    this.onCheckedChange.emit(this.checked);\r\n  }\r\n\r\n  get value(): boolean{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: boolean) {\r\n    this.control.setValue(val);\r\n    this.onCheckedChange.emit(val);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss'\r\n})\r\nexport class CheckboxComponent {\r\n  /**\r\n   * Sets the checkbox checked or unchecked\r\n   * */\r\n  @Input()\r\n  checked = false;\r\n  /**\r\n   * The label which appears nex to the checkbox.\r\n   * */\r\n  @Input()\r\n  label= '';\r\n  /**\r\n   * FormControl for the checkbox to use ReactiveForms.\r\n   * */\r\n  @Input()\r\n  control = new FormControl(false);\r\n\r\n  /**\r\n   * Event firing when the checked value changes.\r\n   * */\r\n  @Output()\r\n  onCheckedChange = new EventEmitter<boolean>();\r\n\r\n  /**\r\n   * Handler function for the checked value change.\r\n   * */\r\n  checkedChange() {\r\n    this.checked = ! this.checked;\r\n    this.onCheckedChange.emit(this.checked);\r\n  }\r\n\r\n  get value(): boolean{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: boolean) {\r\n    this.control.setValue(val);\r\n    this.onCheckedChange.emit(val);\r\n  }\r\n}\r\n",
             "styleUrl": "./checkbox.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -515,7 +529,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 33,
+                        "line": 49,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -532,7 +546,7 @@
                         "name": "value",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 29
+                        "line": 45
                     }
                 }
             },
@@ -746,7 +760,7 @@
         },
         {
             "name": "DropdownComponent",
-            "id": "component-DropdownComponent-ca61c8726d71b59018bc12ffb3cf36aa01ed3c256c54550bd73ded2e7fee35c5112c4f5f56c81baaf6187b7358f5b41108055548cd010f218a1745d7db103253",
+            "id": "component-DropdownComponent-c46ea174dd0931a445eb338a0f9a454dc279520b63d96a5ee3f05d65f05f19c1b0646ed43117a1a1aca62ad6b7d0fc5ec4ac791b2ee2a2963c845971be24bc5e",
             "file": "src/components/dropdown/dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -767,7 +781,9 @@
                     "defaultValue": "new FormControl('')",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "rawdescription": "\n\nFormControl for the dropdown to use ReactiveForms.\n",
+                    "description": "<p>FormControl for the dropdown to use ReactiveForms.</p>\n",
+                    "line": 33,
                     "type": "any",
                     "decorators": []
                 },
@@ -776,7 +792,9 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "rawdescription": "\n\nLabel for the dropdown component.\n",
+                    "description": "<p>Label for the dropdown component.</p>\n",
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 },
@@ -785,7 +803,9 @@
                     "defaultValue": "new Array<{value: string, displayName: string}>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "rawdescription": "\n\nThe list of selectable options for the dropdown.\n",
+                    "description": "<p>The list of selectable options for the dropdown.</p>\n",
+                    "line": 28,
                     "type": "any",
                     "decorators": []
                 }
@@ -796,7 +816,9 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "rawdescription": "\n\nEvent firing when the selected value changes.\n",
+                    "description": "<p>Event firing when the selected value changes.</p>\n",
+                    "line": 39,
                     "type": "EventEmitter"
                 }
             ],
@@ -808,22 +830,24 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 46,
+                    "description": "<p>Icon for the dropdown.</p>\n",
+                    "line": 78,
+                    "rawdescription": "\n\nIcon for the dropdown.\n",
                     "modifierKind": [
                         124,
                         148
                     ]
                 },
                 {
-                    "name": "isModalOpen",
+                    "name": "isDropdownOpen",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 30
+                    "description": "<p>Specifies whether the dropdown is open or not.</p>\n",
+                    "line": 44,
+                    "rawdescription": "\n\nSpecifies whether the dropdown is open or not.\n"
                 },
                 {
                     "name": "selectedValueDisplay",
@@ -832,39 +856,12 @@
                     "deprecationMessage": "",
                     "type": "string",
                     "optional": false,
-                    "description": "",
-                    "line": 31
+                    "description": "<p>The displayValue of the selected value.</p>\n",
+                    "line": 48,
+                    "rawdescription": "\n\nThe displayValue of the selected value.\n"
                 }
             ],
             "methodsClass": [
-                {
-                    "name": "selectionChange",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 33,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
                 {
                     "name": "setDropdownValue",
                     "args": [
@@ -878,9 +875,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nSetting the selected value of the dropdown then closes the option list.\n",
+                    "description": "<p>Setting the selected value of the dropdown then closes the option list.</p>\n",
                     "jsdoctags": [
                         {
                             "name": "option",
@@ -899,9 +898,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 62,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nToggling isModalOpen's value.\n",
+                    "description": "<p>Toggling isModalOpen&#39;s value.</p>\n"
                 }
             ],
             "deprecated": false,
@@ -926,7 +927,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faChevronDown} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    CommonModule,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss'\r\n})\r\nexport class DropdownComponent {\r\n  @Input()\r\n  label = '';\r\n  @Input()\r\n  options = new Array<{value: string, displayName: string}>();\r\n\r\n  @Output()\r\n  onSelectionChange = new EventEmitter<string>();\r\n\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  isModalOpen = false;\r\n  selectedValueDisplay = '';\r\n\r\n  selectionChange(value: string) {\r\n    this.onSelectionChange.emit(value);\r\n  }\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.onSelectionChange.emit(val);\r\n  }\r\n\r\n  protected readonly faChevronDown = faChevronDown;\r\n\r\n  toggleDropdown() {\r\n    this.isModalOpen = !this.isModalOpen;\r\n  }\r\n\r\n  setDropdownValue(option: { value: string; displayName: string }) {\r\n    this.selectedValueDisplay = option.displayName;\r\n    this.value = option.value;\r\n    this.isModalOpen = false;\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faChevronDown} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    CommonModule,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './dropdown.component.html',\r\n  styleUrl: './dropdown.component.scss'\r\n})\r\nexport class DropdownComponent {\r\n  /**\r\n   * Label for the dropdown component.\r\n   * */\r\n  @Input()\r\n  label = '';\r\n  /**\r\n   * The list of selectable options for the dropdown.\r\n   * */\r\n  @Input()\r\n  options = new Array<{value: string, displayName: string}>();\r\n  /**\r\n   * FormControl for the dropdown to use ReactiveForms.\r\n   * */\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  /**\r\n   * Event firing when the selected value changes.\r\n   * */\r\n  @Output()\r\n  onSelectionChange = new EventEmitter<string>();\r\n\r\n  /**\r\n   * Specifies whether the dropdown is open or not.\r\n   * */\r\n  isDropdownOpen = false;\r\n  /**\r\n   * The displayValue of the selected value.\r\n   * */\r\n  selectedValueDisplay = '';\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.onSelectionChange.emit(val);\r\n  }\r\n\r\n  /**\r\n   * Toggling isModalOpen's value.\r\n   * */\r\n  toggleDropdown() {\r\n    this.isDropdownOpen = !this.isDropdownOpen;\r\n  }\r\n\r\n  /**\r\n   * Setting the selected value of the dropdown then closes the option list.\r\n   * */\r\n  setDropdownValue(option: { value: string; displayName: string }) {\r\n    this.selectedValueDisplay = option.displayName;\r\n    this.value = option.value;\r\n    this.isDropdownOpen = false;\r\n  }\r\n\r\n  /**\r\n   * Icon for the dropdown.\r\n   * */\r\n  protected readonly faChevronDown = faChevronDown;\r\n}\r\n",
             "styleUrl": "./dropdown.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -949,7 +950,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 41,
+                        "line": 54,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -966,15 +967,15 @@
                         "name": "value",
                         "type": "string",
                         "returnType": "string",
-                        "line": 37
+                        "line": 50
                     }
                 }
             },
-            "templateData": "<!--<div class=\"input-container\" [ngClass]=\"control.invalid && control.touched ? 'invalid-input' : ''\">-->\r\n<!--  <div>{{label}}</div>-->\r\n<!--  <select #dropdown [formControl]=\"control\" (change)=\"selectionChange(dropdown.value)\">-->\r\n<!--    <option *ngFor=\"let opt of options\" [value]=\"opt.value\" class=\"option\">{{ opt.displayName }}</option>-->\r\n<!--  </select>-->\r\n<!--</div>-->\r\n<!--<div class=\"error-messages\">-->\r\n<!--  <div *ngIf=\"control.invalid && control.touched && control.errors?.['required']\">A mező kitöltése kötelező</div>-->\r\n<!--</div>-->\r\n\r\n<div class=\"custom-select\" [ngClass]=\"[isModalOpen ? 'active' : '', control.invalid && control.touched ? 'invalid-input' : '']\" >\r\n  <button\r\n    class=\"select-button\"\r\n    role=\"combobox\"\r\n    aria-labelledby=\"select button\"\r\n    aria-haspopup=\"listbox\"\r\n    aria-expanded=\"false\"\r\n    aria-controls=\"select-dropdown\"\r\n    (click)=\"toggleDropdown()\"\r\n  >\r\n    <input [formControl]=\"control\" #dropdown class=\"selected-value\" [value]=\"selectedValueDisplay\"/>\r\n    <span class=\"arrow\"><fa-icon [icon]=\"faChevronDown\" [size]=\"'xs'\"/></span>\r\n  </button>\r\n  <ul\r\n    class=\"select-dropdown\"\r\n    role=\"listbox\"\r\n    id=\"select-dropdown\"\r\n  >\r\n    <li *ngFor=\"let option of options\" role=\"option\" (click)=\"setDropdownValue(option)\">\r\n      <input type=\"radio\" [id]=\"option.value\" name=\"job\" />\r\n      <label [for]=\"option.value\">{{ option.displayName }}</label>\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
+            "templateData": "<div class=\"input-container\" [ngClass]=\"[isDropdownOpen ? 'active' : '', control.invalid && control.touched ? 'invalid-input' : '']\" >\r\n\r\n  <button\r\n    class=\"select-button\"\r\n    role=\"combobox\"\r\n    aria-labelledby=\"select button\"\r\n    aria-haspopup=\"listbox\"\r\n    aria-expanded=\"false\"\r\n    aria-controls=\"select-dropdown\"\r\n    (click)=\"toggleDropdown()\"\r\n  >\r\n    <div class=\"dropdown-input\">\r\n      <div class=\"dropdown-label\">{{ label }}</div>\r\n      <input [formControl]=\"control\" #dropdown class=\"selected-value\" [value]=\"selectedValueDisplay\" readonly/>\r\n    </div>\r\n    <span class=\"arrow\"><fa-icon [icon]=\"faChevronDown\" [size]=\"'xs'\"/></span>\r\n  </button>\r\n  <ul\r\n    class=\"select-dropdown\"\r\n    role=\"listbox\"\r\n    id=\"select-dropdown\"\r\n  >\r\n    <li *ngFor=\"let option of options\" role=\"option\" (click)=\"setDropdownValue(option)\">\r\n      <input type=\"radio\" [id]=\"option.value\" name=\"job\" />\r\n      <label [for]=\"option.value\">{{ option.displayName }}</label>\r\n    </li>\r\n  </ul>\r\n</div>\r\n<div class=\"error-messages\">\r\n  <div *ngIf=\"control.invalid && control.touched && control.errors?.['required']\">A mező kitöltése kötelező</div>\r\n</div>\r\n<div class=\"overlay\" (click)=\"isDropdownOpen=false\" *ngIf=\"isDropdownOpen\"></div>\r\n"
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-dba3f0df81a466ee76c55147cabb6691434c0caec7dd96e12fca7e2ab9020b63978874a25e5993913b3ec1401ad811a5ec6c62749f2829c45da15bbca5e4d473",
+            "id": "component-InputComponent-d5bcfb0dd692759f0454919cb0d1ea7a4f26396d49f9f39ff0e8ba4e887efa09a5d09793e96617a490828a1fb907f44ac836ed8ab3efff3d88f9e1bbc121deb9",
             "file": "src/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -995,7 +996,9 @@
                     "defaultValue": "new FormControl('')",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "rawdescription": "\n\nFormControl for the input to use ReactiveForms.\n",
+                    "description": "<p>FormControl for the input to use ReactiveForms.</p>\n",
+                    "line": 52,
                     "type": "any",
                     "decorators": []
                 },
@@ -1004,7 +1007,9 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "rawdescription": "\n\nSpecifies whether is the input disabled or not.\n",
+                    "description": "<p>Specifies whether is the input disabled or not.</p>\n",
+                    "line": 42,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1013,7 +1018,9 @@
                     "defaultValue": "'Label'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "rawdescription": "\n\nThe input's label.\n",
+                    "description": "<p>The input&#39;s label.</p>\n",
+                    "line": 37,
                     "type": "string",
                     "decorators": []
                 },
@@ -1022,7 +1029,9 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "rawdescription": "\n\nname of the input.\n",
+                    "description": "<p>name of the input.</p>\n",
+                    "line": 47,
                     "type": "string",
                     "decorators": []
                 },
@@ -1031,7 +1040,9 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "rawdescription": "\n\nBasic HTML <input> tag type.\n",
+                    "description": "<p>Basic HTML <input> tag type.</p>\n",
+                    "line": 32,
                     "type": "\"text\" | \"email\"",
                     "decorators": []
                 }
@@ -1042,7 +1053,9 @@
                     "defaultValue": "new EventEmitter<string>",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "rawdescription": "\n\nEvent firing when the input value changes.\n",
+                    "description": "<p>Event firing when the input value changes.</p>\n",
+                    "line": 58,
                     "type": "EventEmitter"
                 }
             ],
@@ -1075,9 +1088,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 77,
+                    "line": 99,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nHelper function for styling purposes\n",
+                    "description": "<p>Helper function for styling purposes</p>\n",
                     "jsdoctags": [
                         {
                             "name": "$event",
@@ -1103,9 +1118,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 73,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nHelper function for styling purposes\n",
+                    "description": "<p>Helper function for styling purposes</p>\n",
                     "jsdoctags": [
                         {
                             "name": "$event",
@@ -1131,9 +1148,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 69,
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nHelper function for styling purposes\n",
+                    "description": "<p>Helper function for styling purposes</p>\n",
                     "jsdoctags": [
                         {
                             "name": "$event",
@@ -1152,7 +1171,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 65,
+                    "line": 80,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1162,7 +1181,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1172,17 +1191,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "valueChangeHandler",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 61,
+                    "line": 76,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1211,7 +1220,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input, OnDestroy,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport {BehaviorSubject, debounceTime,} from \"rxjs\";\r\nimport {FormControl, FormsModule, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  standalone: true,\r\n  imports: [\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    NgClass,\r\n    NgIf\r\n  ],\r\n  templateUrl: './input.component.html',\r\n  styleUrl: './input.component.scss'\r\n})\r\nexport class InputComponent implements OnInit, OnDestroy {\r\n\r\n  private valueSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');\r\n\r\n  @Input()\r\n  type: 'text' | 'email' = 'text';\r\n  @Input()\r\n  label = 'Label';\r\n  @Input()\r\n  disabled = false;\r\n  @Input()\r\n  name = '';\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  @Output()\r\n  valueChange = new EventEmitter<string>;\r\n\r\n  ngOnInit(): void {\r\n    this.valueSubject.pipe(debounceTime(500))\r\n      .subscribe(() => {\r\n        this.valueChangeHandler();\r\n      });\r\n  }\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.valueChange.emit(val);\r\n  }\r\n\r\n  onInput(){\r\n    this.valueSubject.next(this.value);\r\n  }\r\n  valueChangeHandler() {\r\n    this.valueChange.emit(this.value);\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.valueSubject.complete();\r\n  }\r\n\r\n  makeFocused($event: any) {\r\n    $event.currentTarget.classList.add('focused');\r\n  }\r\n\r\n  makeBlurred($event: any) {\r\n    $event.currentTarget.classList.remove('focused');\r\n  }\r\n\r\n  applyContainerBlur($event: any) {\r\n    $event.target.parentNode.classList.remove('focused');\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input, OnDestroy,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport {BehaviorSubject, debounceTime,} from \"rxjs\";\r\nimport {FormControl, FormsModule, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {NgClass, NgIf} from \"@angular/common\";\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  standalone: true,\r\n  imports: [\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    NgClass,\r\n    NgIf\r\n  ],\r\n  templateUrl: './input.component.html',\r\n  styleUrl: './input.component.scss'\r\n})\r\nexport class InputComponent implements OnInit, OnDestroy {\r\n\r\n  private valueSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');\r\n\r\n  /**\r\n   * Basic HTML <input> tag type.\r\n   */\r\n  @Input()\r\n  type: 'text' | 'email' = 'text';\r\n  /**\r\n   * The input's label.\r\n   * */\r\n  @Input()\r\n  label = 'Label';\r\n  /**\r\n   * Specifies whether is the input disabled or not.\r\n   */\r\n  @Input()\r\n  disabled = false;\r\n  /**\r\n   * name of the input.\r\n   */\r\n  @Input()\r\n  name = '';\r\n  /**\r\n   * FormControl for the input to use ReactiveForms.\r\n   * */\r\n  @Input()\r\n  control = new FormControl('');\r\n\r\n  /**\r\n   * Event firing when the input value changes.\r\n   * */\r\n  @Output()\r\n  valueChange = new EventEmitter<string>;\r\n\r\n  ngOnInit(): void {\r\n    this.valueSubject.pipe(debounceTime(500))\r\n      .subscribe(() => {\r\n        this.valueChange.emit(this.value);\r\n      });\r\n  }\r\n\r\n  get value(): string{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: string) {\r\n    this.control.setValue(val);\r\n    this.valueChange.emit(val);\r\n  }\r\n\r\n  onInput(){\r\n    this.valueSubject.next(this.value);\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.valueSubject.complete();\r\n  }\r\n\r\n  /**\r\n   * Helper function for styling purposes\r\n   * */\r\n  makeFocused($event: any) {\r\n    $event.currentTarget.classList.add('focused');\r\n  }\r\n  /**\r\n   * Helper function for styling purposes\r\n   * */\r\n  makeBlurred($event: any) {\r\n    $event.currentTarget.classList.remove('focused');\r\n  }\r\n  /**\r\n   * Helper function for styling purposes\r\n   * */\r\n  applyContainerBlur($event: any) {\r\n    $event.target.parentNode.classList.remove('focused');\r\n  }\r\n}\r\n",
             "styleUrl": "./input.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1238,7 +1247,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 53,
+                        "line": 71,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -1255,7 +1264,7 @@
                         "name": "value",
                         "type": "string",
                         "returnType": "string",
-                        "line": 49
+                        "line": 67
                     }
                 }
             },
@@ -1657,7 +1666,7 @@
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-bc6cd64b09cff2840e32250c5108fb0a679a85f13976fb81aba29714edcfde398f7beba10e912b75a50f1f451cfde21b38e3777c134210d278025554d702c462",
+            "id": "component-TableComponent-bdc02eb7fa3a3c7d8a40ead20e51affafc21c6212539c1eb2bc55f6fb44909d3712e681872d4dfb2828f9f86b34dea01fec8cd6556c43e82434760e0b3ba9529",
             "file": "src/components/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1680,7 +1689,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nArray of the buttons needed for the table actions.\n",
                     "description": "<p>Array of the buttons needed for the table actions.</p>\n",
-                    "line": 32,
+                    "line": 30,
                     "type": "Array<IconDefinition> | null",
                     "decorators": []
                 },
@@ -1691,7 +1700,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe data of the table\n",
                     "description": "<p>The data of the table</p>\n",
-                    "line": 26,
+                    "line": 25,
                     "type": "Array<object>",
                     "decorators": []
                 },
@@ -1700,7 +1709,9 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "rawdescription": "\n\nDefines which of the columns should be displayed. If unset, it will contain all the columns of the data array's firs item.\n",
+                    "description": "<p>Defines which of the columns should be displayed. If unset, it will contain all the columns of the data array&#39;s firs item.</p>\n",
+                    "line": 35,
                     "type": "Array<literal type>",
                     "decorators": []
                 }
@@ -1711,7 +1722,9 @@
                     "defaultValue": "new EventEmitter<{ iconName: string, user: User }>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 41,
+                    "rawdescription": "\n\nEvent firing when one of the action buttons are clicked.\n",
+                    "description": "<p>Event firing when one of the action buttons are clicked.</p>\n",
+                    "line": 46,
                     "type": "EventEmitter"
                 },
                 {
@@ -1719,9 +1732,9 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nEmits an event when one of the action buttons are clicked.\n",
-                    "description": "<p>Emits an event when one of the action buttons are clicked.</p>\n",
-                    "line": 38,
+                    "rawdescription": "\n\nEvent firing when one of the action buttons are clicked.\n",
+                    "description": "<p>Event firing when one of the action buttons are clicked.</p>\n",
+                    "line": 41,
                     "type": "EventEmitter"
                 }
             ],
@@ -1733,8 +1746,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 102,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 146,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1747,8 +1761,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 103,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 150,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1761,8 +1776,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 98,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 130,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1775,8 +1791,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 99,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 134,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1789,8 +1806,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 101,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 142,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1803,8 +1821,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 100,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 138,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1817,8 +1836,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 68
+                    "description": "<p>Helper function which helps calculate the headers array if it&#39;s unset by the parent component</p>\n",
+                    "line": 84,
+                    "rawdescription": "\n\nHelper function which helps calculate the headers array if it's unset by the parent component\n"
                 },
                 {
                     "name": "headerKeys",
@@ -1827,8 +1847,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 46
+                    "description": "<p>Keys of the headers array.</p>\n",
+                    "line": 50,
+                    "rawdescription": "\n\nKeys of the headers array.\n"
                 },
                 {
                     "name": "isBoolean",
@@ -1837,8 +1858,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 75
+                    "description": "<p>Helper function which helps decide whether a value&#39;s type is boolean or not.</p>\n",
+                    "line": 94,
+                    "rawdescription": "\n\nHelper function which helps decide whether a value's type is boolean or not.\n"
                 },
                 {
                     "name": "Math",
@@ -1847,8 +1869,9 @@
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
-                    "description": "",
-                    "line": 97,
+                    "description": "<p>Icon for the table</p>\n",
+                    "line": 126,
+                    "rawdescription": "\n\nIcon for the table\n",
                     "modifierKind": [
                         124,
                         148
@@ -1861,8 +1884,9 @@
                     "deprecationMessage": "",
                     "type": "number",
                     "optional": false,
-                    "description": "",
-                    "line": 47
+                    "description": "<p>Index of the current page.</p>\n",
+                    "line": 54,
+                    "rawdescription": "\n\nIndex of the current page.\n"
                 },
                 {
                     "name": "shownTableData",
@@ -1871,8 +1895,9 @@
                     "deprecationMessage": "",
                     "type": "Array<object>",
                     "optional": false,
-                    "description": "",
-                    "line": 48
+                    "description": "<p>Currently displayed subset of the data array.</p>\n",
+                    "line": 58,
+                    "rawdescription": "\n\nCurrently displayed subset of the data array.\n"
                 }
             ],
             "methodsClass": [
@@ -1895,9 +1920,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 63,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nHandler function for click any of the action buttons\n",
+                    "description": "<p>Handler function for click any of the action buttons</p>\n",
                     "jsdoctags": [
                         {
                             "name": "iconName",
@@ -1925,9 +1952,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 84,
+                    "line": 107,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHelper function which helps to fill the shownTableData property.\n",
+                    "description": "<p>Helper function which helps to fill the shownTableData property.</p>\n"
                 },
                 {
                     "name": "findCell",
@@ -1948,9 +1977,11 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 93,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nHelper function which returns the cell by headerKey\n",
+                    "description": "<p>Helper function which returns the cell by headerKey</p>\n",
                     "jsdoctags": [
                         {
                             "name": "headerCell",
@@ -1978,7 +2009,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 67,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1988,7 +2019,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 71,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2005,9 +2036,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 99,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n\nHelper function for turning to the next or the previous page of the table.\n",
+                    "description": "<p>Helper function for turning to the next or the previous page of the table.</p>\n",
                     "jsdoctags": [
                         {
                             "name": "pageNumber",
@@ -2043,7 +2076,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faCircleCheck, faCircleXmark, faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\nimport {User} from \"../../../types/User\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnChanges, OnInit {\r\n\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n\r\n  /**\r\n   * Emits an event when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  mainButtonClicked = new EventEmitter();\r\n\r\n  @Output()\r\n  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();\r\n\r\n  @Input()\r\n  headers: Array<{ key: string, displayName: string }>= [];\r\n\r\n  headerKeys = new Array<string>();\r\n  pageCounter = 1;\r\n  shownTableData: Array<object> = [];\r\n\r\n  actionButtonHandler(iconName: string, user: object){\r\n    this.actionButtonClicked.emit({iconName: iconName, user: user as User});\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.calculateTable();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    if(!this.headers) {\r\n      this.headers = this.getHeaders();\r\n    } else {\r\n      this.headerKeys = this.headers.map(header => {\r\n        return header.key;\r\n      });\r\n    }\r\n  }\r\n\r\n  getHeaders = () => {\r\n    this.headerKeys = Object.keys(this.data[0]);\r\n    return Object.keys(this.data[0] ?? []).map(item =>{\r\n      return {key: item, displayName: item}\r\n    });\r\n  }\r\n\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n\r\n\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  calculateTable() {\r\n    if(this.data.length !== 0 && this.pageCounter > Math.ceil(this.data.length / 5)) {\r\n      --this.pageCounter;\r\n    }\r\n\r\n    const starterIndex = (this.pageCounter -1) * 5;\r\n    this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);\r\n  }\r\n\r\n  findCell(headerCell: string, row: any): string {\r\n    return row[headerCell];\r\n  }\r\n\r\n  protected readonly Math = Math;\r\n  protected readonly faCircleCheck = faCircleCheck;\r\n  protected readonly faCircleXmark = faCircleXmark;\r\n  protected readonly faPlus = faPlus;\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  protected readonly faChevronRight = faChevronRight;\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';\r\nimport {faChevronLeft, faChevronRight, faPlus, IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\nimport {CommonModule} from \"@angular/common\";\r\nimport {ButtonComponent} from \"../button/button.component\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport {faCircleCheck, faCircleXmark, faFaceSadCry} from \"@fortawesome/free-regular-svg-icons\";\r\nimport {User} from \"../../../types/User\";\r\n\r\n@Component({\r\n  selector: 'app-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    ButtonComponent,\r\n    FaIconComponent\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss'\r\n})\r\nexport class TableComponent implements OnChanges, OnInit {\r\n  /**\r\n   * The data of the table\r\n   * */\r\n  @Input()\r\n  data: Array<object> = [];\r\n  /**\r\n   * Array of the buttons needed for the table actions.\r\n   */\r\n  @Input()\r\n  actionButtons: Array<IconDefinition> | null = null;\r\n  /**\r\n   * Defines which of the columns should be displayed. If unset, it will contain all the columns of the data array's firs item.\r\n   */\r\n  @Input()\r\n  headers: Array<{ key: string, displayName: string }>= [];\r\n\r\n  /**\r\n   * Event firing when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  mainButtonClicked = new EventEmitter();\r\n  /**\r\n   * Event firing when one of the action buttons are clicked.\r\n   */\r\n  @Output()\r\n  actionButtonClicked = new EventEmitter<{ iconName: string, user: User }>();\r\n  /**\r\n   * Keys of the headers array.\r\n   */\r\n  headerKeys = new Array<string>();\r\n  /**\r\n   * Index of the current page.\r\n   */\r\n  pageCounter = 1;\r\n  /**\r\n   * Currently displayed subset of the data array.\r\n   */\r\n  shownTableData: Array<object> = [];\r\n\r\n  /**\r\n   * Handler function for click any of the action buttons\r\n   * */\r\n  actionButtonHandler(iconName: string, user: object){\r\n    this.actionButtonClicked.emit({iconName: iconName, user: user as User});\r\n  }\r\n\r\n  ngOnChanges() {\r\n    this.calculateTable();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    if(this.headers.length === 0) {\r\n      this.headers = this.getHeaders();\r\n    } else {\r\n      this.headerKeys = this.headers.map(header => {\r\n        return header.key;\r\n      });\r\n    }\r\n  }\r\n\r\n  /**\r\n   * Helper function which helps calculate the headers array if it's unset by the parent component\r\n   * */\r\n  getHeaders = () => {\r\n    this.headerKeys = Object.keys(this.data[0]);\r\n    return Object.keys(this.data[0] ?? []).map(item =>{\r\n      return {key: item, displayName: item}\r\n    });\r\n  }\r\n\r\n  /**\r\n   * Helper function which helps decide whether a value's type is boolean or not.\r\n   * */\r\n  isBoolean = (value: any) =>  {return typeof value === 'boolean'}\r\n\r\n  /**\r\n   * Helper function for turning to the next or the previous page of the table.\r\n   * */\r\n  turnPage(pageNumber: number) {\r\n    this.pageCounter += pageNumber;\r\n    this.calculateTable();\r\n  }\r\n\r\n  /**\r\n   * Helper function which helps to fill the shownTableData property.\r\n   * */\r\n  calculateTable() {\r\n    if(this.data.length !== 0 && this.pageCounter > Math.ceil(this.data.length / 5)) {\r\n      --this.pageCounter;\r\n    }\r\n\r\n    const starterIndex = (this.pageCounter -1) * 5;\r\n    this.shownTableData = this.data.slice(starterIndex, starterIndex + 5);\r\n  }\r\n\r\n  /**\r\n   * Helper function which returns the cell by headerKey\r\n   * */\r\n  findCell(headerCell: string, row: any): string {\r\n    return row[headerCell];\r\n  }\r\n\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly Math = Math;\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly faCircleCheck = faCircleCheck;\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly faCircleXmark = faCircleXmark;\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly faPlus = faPlus;\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly faFaceSadCry = faFaceSadCry;\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly faChevronLeft = faChevronLeft;\r\n  /**\r\n   * Icon for the table\r\n   * */\r\n  protected readonly faChevronRight = faChevronRight;\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2053,7 +2086,7 @@
                 "OnChanges",
                 "OnInit"
             ],
-            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconName]=\"faPlus\" [label]=\"'Létrehozás'\" (onClick)=\"mainButtonClicked.emit()\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header.displayName }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of shownTableData; let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <td *ngFor=\"let headerCell of headers\">\r\n        <ng-container *ngIf=\"isBoolean(findCell(headerCell.key, row)); then checkbox; else text;\"></ng-container>\r\n        <ng-template #checkbox>\r\n          <fa-icon [icon]=\"findCell(headerCell.key, row) ? faCircleCheck : faCircleXmark\" size=\"xl\"/>\r\n        </ng-template>\r\n        <ng-template #text>\r\n          {{ findCell(headerCell.key, row) }}\r\n        </ng-template>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconName]=\"action\" class=\"action-button\" (onClick)=\"actionButtonHandler(action.iconName, row)\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconName]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 1\"/>\r\n    {{pageCounter}}. oldal\r\n    <app-button [iconName]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter >= data.length / 5\"/>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconName]=\"faPlus\" (onClick)=\"mainButtonClicked.emit()\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
+            "templateData": "<ng-container *ngIf=\"data.length > 0; then table; else empty\"></ng-container>\r\n<ng-template #table>\r\n  <app-button [iconDefinition]=\"faPlus\" [label]=\"'Létrehozás'\" (onClick)=\"mainButtonClicked.emit()\"/>\r\n  <table>\r\n    <thead>\r\n    <tr>\r\n      <th *ngFor=\"let header of headers\"> {{ header.displayName }}</th>\r\n      <th *ngIf=\"actionButtons\" [colSpan]=\"actionButtons.length\" class=\"actions\"> Műveletek</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let row of shownTableData; let i = index\" [ngStyle]=\"{'visibility':Math.floor(i / 5) === pageCounter ? 'visible' : 'none'}\">\r\n      <td *ngFor=\"let headerCell of headers\">\r\n        <ng-container *ngIf=\"isBoolean(findCell(headerCell.key, row)); then checkbox; else text;\"></ng-container>\r\n        <ng-template #checkbox>\r\n          <fa-icon [icon]=\"findCell(headerCell.key, row) ? faCircleCheck : faCircleXmark\" size=\"xl\"/>\r\n        </ng-template>\r\n        <ng-template #text>\r\n          {{ findCell(headerCell.key, row) }}\r\n        </ng-template>\r\n      </td>\r\n      <td *ngFor=\"let action of actionButtons\">\r\n        <app-button [iconDefinition]=\"action\" class=\"action-button\" (onClick)=\"actionButtonHandler(action.iconName, row)\"/>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"pager\">\r\n    <app-button [iconDefinition]=\"faChevronLeft\" (onClick)=\"turnPage((-1))\" [disabled]=\"pageCounter === 1\"/>\r\n    {{pageCounter}}. oldal\r\n    <app-button [iconDefinition]=\"faChevronRight\" (onClick)=\"turnPage(1)\" [disabled]=\"pageCounter >= data.length / 5\"/>\r\n  </div>\r\n</ng-template>\r\n\r\n<ng-template #empty>\r\n  <div class=\"empty\">\r\n    <fa-icon [icon]=\"faFaceSadCry\" size=\"8x\"/>\r\n    <b class=\"title\">Nincs felhasználó</b>\r\n    <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>\r\n    <app-button [label]=\"'Új felhasználó hozzáadása'\" [iconDefinition]=\"faPlus\" (onClick)=\"mainButtonClicked.emit()\"></app-button>\r\n  </div>\r\n</ng-template>\r\n"
         },
         {
             "name": "UserListComponent",
@@ -2348,8 +2381,8 @@
     },
     "routes": [],
     "coverage": {
-        "count": 4,
-        "status": "low",
+        "count": 29,
+        "status": "medium",
         "files": [
             {
                 "filePath": "src/app/app.component.ts",
@@ -2375,36 +2408,36 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 57,
-                "coverageCount": "4/7",
-                "status": "good"
+                "coveragePercent": 85,
+                "coverageCount": "6/7",
+                "status": "very-good"
             },
             {
                 "filePath": "src/components/checkbox/checkbox.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/6",
-                "status": "low"
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
             },
             {
                 "filePath": "src/components/dropdown/dropdown.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "DropdownComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/11",
-                "status": "low"
+                "coveragePercent": 90,
+                "coverageCount": "9/10",
+                "status": "very-good"
             },
             {
                 "filePath": "src/components/input/input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "InputComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/15",
-                "status": "low"
+                "coveragePercent": 64,
+                "coverageCount": "9/14",
+                "status": "good"
             },
             {
                 "filePath": "src/components/modal/modal.component.ts",
@@ -2420,9 +2453,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TableComponent",
-                "coveragePercent": 12,
-                "coverageCount": "3/24",
-                "status": "low"
+                "coveragePercent": 87,
+                "coverageCount": "21/24",
+                "status": "very-good"
             },
             {
                 "filePath": "src/pages/_utils/dropdown-options.ts",

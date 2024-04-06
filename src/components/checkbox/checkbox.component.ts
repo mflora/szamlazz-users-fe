@@ -11,16 +11,31 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
   styleUrl: './checkbox.component.scss'
 })
 export class CheckboxComponent {
+  /**
+   * Sets the checkbox checked or unchecked
+   * */
   @Input()
   checked = false;
+  /**
+   * The label which appears nex to the checkbox.
+   * */
   @Input()
   label= '';
+  /**
+   * FormControl for the checkbox to use ReactiveForms.
+   * */
   @Input()
   control = new FormControl(false);
 
+  /**
+   * Event firing when the checked value changes.
+   * */
   @Output()
   onCheckedChange = new EventEmitter<boolean>();
 
+  /**
+   * Handler function for the checked value change.
+   * */
   checkedChange() {
     this.checked = ! this.checked;
     this.onCheckedChange.emit(this.checked);

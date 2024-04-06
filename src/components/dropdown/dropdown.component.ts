@@ -16,23 +16,36 @@ import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
   styleUrl: './dropdown.component.scss'
 })
 export class DropdownComponent {
+  /**
+   * Label for the dropdown component.
+   * */
   @Input()
   label = '';
+  /**
+   * The list of selectable options for the dropdown.
+   * */
   @Input()
   options = new Array<{value: string, displayName: string}>();
-
-  @Output()
-  onSelectionChange = new EventEmitter<string>();
-
+  /**
+   * FormControl for the dropdown to use ReactiveForms.
+   * */
   @Input()
   control = new FormControl('');
 
-  isModalOpen = false;
-  selectedValueDisplay = '';
+  /**
+   * Event firing when the selected value changes.
+   * */
+  @Output()
+  onSelectionChange = new EventEmitter<string>();
 
-  selectionChange(value: string) {
-    this.onSelectionChange.emit(value);
-  }
+  /**
+   * Specifies whether the dropdown is open or not.
+   * */
+  isDropdownOpen = false;
+  /**
+   * The displayValue of the selected value.
+   * */
+  selectedValueDisplay = '';
 
   get value(): string{
     return this.control.value!;
@@ -43,15 +56,24 @@ export class DropdownComponent {
     this.onSelectionChange.emit(val);
   }
 
-  protected readonly faChevronDown = faChevronDown;
-
+  /**
+   * Toggling isModalOpen's value.
+   * */
   toggleDropdown() {
-    this.isModalOpen = !this.isModalOpen;
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
+  /**
+   * Setting the selected value of the dropdown then closes the option list.
+   * */
   setDropdownValue(option: { value: string; displayName: string }) {
     this.selectedValueDisplay = option.displayName;
     this.value = option.value;
-    this.isModalOpen = false;
+    this.isDropdownOpen = false;
   }
+
+  /**
+   * Icon for the dropdown.
+   * */
+  protected readonly faChevronDown = faChevronDown;
 }

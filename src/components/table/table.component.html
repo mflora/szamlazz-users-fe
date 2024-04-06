@@ -1,6 +1,6 @@
 <ng-container *ngIf="data.length > 0; then table; else empty"></ng-container>
 <ng-template #table>
-  <app-button [iconName]="faPlus" [label]="'Létrehozás'" (onClick)="mainButtonClicked.emit()"/>
+  <app-button [iconDefinition]="faPlus" [label]="'Létrehozás'" (onClick)="mainButtonClicked.emit()"/>
   <table>
     <thead>
     <tr>
@@ -20,15 +20,15 @@
         </ng-template>
       </td>
       <td *ngFor="let action of actionButtons">
-        <app-button [iconName]="action" class="action-button" (onClick)="actionButtonHandler(action.iconName, row)"/>
+        <app-button [iconDefinition]="action" class="action-button" (onClick)="actionButtonHandler(action.iconName, row)"/>
       </td>
     </tr>
     </tbody>
   </table>
   <div class="pager">
-    <app-button [iconName]="faChevronLeft" (onClick)="turnPage((-1))" [disabled]="pageCounter === 1"/>
+    <app-button [iconDefinition]="faChevronLeft" (onClick)="turnPage((-1))" [disabled]="pageCounter === 1"/>
     {{pageCounter}}. oldal
-    <app-button [iconName]="faChevronRight" (onClick)="turnPage(1)" [disabled]="pageCounter >= data.length / 5"/>
+    <app-button [iconDefinition]="faChevronRight" (onClick)="turnPage(1)" [disabled]="pageCounter >= data.length / 5"/>
   </div>
 </ng-template>
 
@@ -37,6 +37,6 @@
     <fa-icon [icon]="faFaceSadCry" size="8x"/>
     <b class="title">Nincs felhasználó</b>
     <p>Eddig még nincs egyetlen megjelenítendő felhasználó sem.</p>
-    <app-button [label]="'Új felhasználó hozzáadása'" [iconName]="faPlus" (onClick)="mainButtonClicked.emit()"></app-button>
+    <app-button [label]="'Új felhasználó hozzáadása'" [iconDefinition]="faPlus" (onClick)="mainButtonClicked.emit()"></app-button>
   </div>
 </ng-template>
