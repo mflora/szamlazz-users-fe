@@ -29,12 +29,12 @@ export class AppComponent implements OnInit{
         return childRoute.data['title'];
       })
     ).subscribe((title: string) => {
-      console.log(title);
       this.currentTitle = title;
     });
   }
 
-    protected readonly routes = routes;
+  protected readonly routes = routes;
   protected readonly faUser = faUser;
   protected readonly faBook = faBook;
 }
+

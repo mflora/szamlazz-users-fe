@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../../types/User";
 import {Observable} from "rxjs";
@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class UsersService {
 
-  BASE_PATH= "http://localhost:8888/api/users";
+  BASE_PATH= `${comURL()}api/users`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -36,4 +36,12 @@ export class UsersService {
     return this.http.delete(`${this.BASE_PATH}/${userId}`, this.httpOptions);
   }
 
+}
+
+export function comURL(): string {
+  if (window.location.href.indexOf('localhost') > 0) {
+    return 'http://localhost:8888/'
+  } else {
+    return 'https://obscure-brushlands-56186-7a703ceadfac.herokuapp.com/'
+  }
 }
