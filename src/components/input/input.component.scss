@@ -4,7 +4,6 @@
   padding: 8px 16px;
   background: #fff;
   font-size: 12px;
-  font-family: 'Open Sans', sans-serif;
   color: #5b747b;
   flex-direction: column;
   justify-content: center;
@@ -17,19 +16,11 @@
   }
 }
 
-.focused {
-  border: 1px solid #94bee3;
-}
-
 .invalid-input {
   border: 1px solid red;
+  border-radius: 8px;
 }
 
-.error-messages {
-  font-size: 10px;
-  font-family: 'Open Sans', sans-serif;
-  color: red;
-  padding-top: 2px;
-  padding-left: 8px;
-  height: 20px;
+.focused {
+  border: 1px solid #94bee3;
 }

@@ -238,7 +238,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-3a821ef4a37ac7f74bc57e79af189192eecac28021e1080cddb1f15277458d9cd512229ffcd7ba91d003d0768b0523d746b70ab0cf890fc77af4cd6f3f6ff60a",
+            "id": "component-AppComponent-ac9b583643a431f30c3774a4e03fecc9a6deaa66b763f99145cd136f45c3dd007e5b95710211e5f89e2d88c30af8b1ea03e2641a4ab53433d3133e7ee70ec6f6",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -257,17 +257,73 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "title",
-                    "defaultValue": "'users-fe'",
+                    "name": "currentTitle",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 18,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "faBook",
+                    "defaultValue": "faBook",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "faUser",
+                    "defaultValue": "faUser",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "routes",
+                    "defaultValue": "routes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -276,12 +332,16 @@
             "imports": [
                 {
                     "name": "RouterOutlet"
+                },
+                {
+                    "name": "FaIconComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\n\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'users-fe';\r\n\r\n  constructor() {}\r\n}\r\n",
+            "sourceCode": "import {Component, OnInit} from '@angular/core';\r\nimport {NavigationEnd, Router, RouterOutlet} from '@angular/router';\r\nimport {routes} from \"./app.routes\";\r\nimport {filter, map} from \"rxjs\";\r\nimport {FaIconComponent} from \"@fortawesome/angular-fontawesome\";\r\nimport { faUser } from '@fortawesome/free-regular-svg-icons';\r\nimport {faBook} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet, FaIconComponent],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent implements OnInit{\r\n  public currentTitle = '';\r\n  constructor(protected router: Router) {}\r\n\r\n  ngOnInit() {\r\n    this.router.events.pipe(\r\n      filter(event => event instanceof NavigationEnd),\r\n      map(() => {\r\n        let childRoute = this.router.routerState.snapshot.root;\r\n        while (childRoute.firstChild) {\r\n          childRoute = childRoute.firstChild;\r\n        }\r\n        return childRoute.data['title'];\r\n      })\r\n    ).subscribe((title: string) => {\r\n      console.log(title);\r\n      this.currentTitle = title;\r\n    });\r\n  }\r\n\r\n    protected readonly routes = routes;\r\n  protected readonly faUser = faUser;\r\n  protected readonly faBook = faBook;\r\n}\r\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -291,11 +351,32 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [],
-                "line": 13
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "extends": [],
-            "templateData": "<router-outlet />\r\n"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"page\">\r\n  <div class=\"navbar\"></div>\r\n  <div class=\"title\">\r\n    <span>{{ currentTitle }}</span>\r\n    <div class=\"user-storybook\">\r\n      <div class=\"user\"><fa-icon [icon]=\"faUser\" size=\"xs\"/> <span class=\"username\">Flóra</span> </div>\r\n      <a href=\"https://6608253830769e14b4ca18e3-fcufhpusyq.chromatic.com/\" class=\"storybook\"><fa-icon [icon]=\"faBook\"/> </a>\r\n    </div>\r\n  </div>\r\n  <router-outlet/>\r\n</div>\r\n"
         },
         {
             "name": "ButtonComponent",
@@ -415,7 +496,7 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-9199cafa72618cc1084586a2d1fb06c89b4c5434afcc65f134d6851d3378f8e71dca3f3cf423a596d1ab36b9d50840372b34d4927df6a502dc3be30686e3e6db",
+            "id": "component-CheckboxComponent-8dca390c0c84ef6d2579eb0a03ea0ffa011407edd2a92f3f20ace1601a5638029618f0838447ac3a4c77768feb001223ea13e94a1484ce25b565d73cd6ccf4ab",
             "file": "src/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -438,7 +519,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSets the checkbox checked or unchecked\n",
                     "description": "<p>Sets the checkbox checked or unchecked</p>\n",
-                    "line": 19,
+                    "line": 18,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -449,7 +530,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFormControl for the checkbox to use ReactiveForms.\n",
                     "description": "<p>FormControl for the checkbox to use ReactiveForms.</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "type": "any",
                     "decorators": []
                 },
@@ -460,7 +541,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe label which appears nex to the checkbox.\n",
                     "description": "<p>The label which appears nex to the checkbox.</p>\n",
-                    "line": 24,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 }
@@ -473,7 +554,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEvent firing when the checked value changes.\n",
                     "description": "<p>Event firing when the checked value changes.</p>\n",
-                    "line": 35,
+                    "line": 34,
                     "type": "EventEmitter"
                 }
             ],
@@ -485,7 +566,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandler function for the checked value change.\n",
@@ -506,7 +587,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\nimport {IconDefinition} from \"@fortawesome/free-solid-svg-icons\";\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss'\r\n})\r\nexport class CheckboxComponent {\r\n  /**\r\n   * Sets the checkbox checked or unchecked\r\n   * */\r\n  @Input()\r\n  checked = false;\r\n  /**\r\n   * The label which appears nex to the checkbox.\r\n   * */\r\n  @Input()\r\n  label= '';\r\n  /**\r\n   * FormControl for the checkbox to use ReactiveForms.\r\n   * */\r\n  @Input()\r\n  control = new FormControl(false);\r\n\r\n  /**\r\n   * Event firing when the checked value changes.\r\n   * */\r\n  @Output()\r\n  onCheckedChange = new EventEmitter<boolean>();\r\n\r\n  /**\r\n   * Handler function for the checked value change.\r\n   * */\r\n  checkedChange() {\r\n    this.checked = ! this.checked;\r\n    this.onCheckedChange.emit(this.checked);\r\n  }\r\n\r\n  get value(): boolean{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: boolean) {\r\n    this.control.setValue(val);\r\n    this.onCheckedChange.emit(val);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {FormControl, ReactiveFormsModule} from \"@angular/forms\";\r\n\r\n@Component({\r\n  selector: 'app-checkbox',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './checkbox.component.html',\r\n  styleUrl: './checkbox.component.scss'\r\n})\r\nexport class CheckboxComponent {\r\n  /**\r\n   * Sets the checkbox checked or unchecked\r\n   * */\r\n  @Input()\r\n  checked = false;\r\n  /**\r\n   * The label which appears nex to the checkbox.\r\n   * */\r\n  @Input()\r\n  label= '';\r\n  /**\r\n   * FormControl for the checkbox to use ReactiveForms.\r\n   * */\r\n  @Input()\r\n  control = new FormControl(false);\r\n\r\n  /**\r\n   * Event firing when the checked value changes.\r\n   * */\r\n  @Output()\r\n  onCheckedChange = new EventEmitter<boolean>();\r\n\r\n  /**\r\n   * Handler function for the checked value change.\r\n   * */\r\n  checkedChange() {\r\n    this.checked = ! this.checked;\r\n    this.onCheckedChange.emit(this.checked);\r\n  }\r\n\r\n  get value(): boolean{\r\n    return this.control.value!;\r\n  }\r\n\r\n  set value(val: boolean) {\r\n    this.control.setValue(val);\r\n    this.onCheckedChange.emit(val);\r\n  }\r\n}\r\n",
             "styleUrl": "./checkbox.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -529,7 +610,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 49,
+                        "line": 48,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -546,7 +627,7 @@
                         "name": "value",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 45
+                        "line": 44
                     }
                 }
             },
@@ -756,7 +837,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"createUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Létrehozás'\" (onClick)=\"createUser()\" [disabled]=\"createUserForm.invalid\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
+            "templateData": "<div class=\"page-container\">\r\n  <form [formGroup]=\"createUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Létrehozás'\" (onClick)=\"createUser()\" [disabled]=\"createUserForm.invalid\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
         },
         {
             "name": "DropdownComponent",
@@ -1662,7 +1743,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"container\">\r\n  <div class=\"title\">Új felhasználó hozzáadása</div>\r\n  <form [formGroup]=\"modifyUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <app-checkbox [label]=\"'Aktív'\" [control]=\"active\"/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Módosítás'\" (onClick)=\"modifyUser()\" [disabled]=\"modifyUserForm.invalid\"/>\r\n      <app-button [label]=\"'Törlés'\" [buttonStyle]=\"'secondary'\" (onClick)=\"openDeleteModal()\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<app-modal [modalData]=\"userInfo\" [isOpen]=\"isModalOpen\"/>\r\n\r\n"
+            "templateData": "<div class=\"page-container\">\r\n  <form [formGroup]=\"modifyUserForm\">\r\n    <app-input [label]=\"'Vezetéknév'\" [control]=\"lastName\"/>\r\n    <app-input [label]=\"'Keresztnév'\" [control]=\"firstName\"/>\r\n    <app-input [label]=\"'Cím'\" [control]=\"address\"/>\r\n    <app-input [label]=\"'Telefon'\" [control]=\"telephone\"/>\r\n    <app-dropdown [label]=\"'Foglalkozás'\" [control]=\"job\" [options]=\"options\"/>\r\n    <app-checkbox [label]=\"'Aktív'\" [control]=\"active\"/>\r\n    <div class=\"buttons-container\">\r\n      <app-button [label]=\"'Módosítás'\" (onClick)=\"modifyUser()\" [disabled]=\"modifyUserForm.invalid\"/>\r\n      <app-button [label]=\"'Törlés'\" [buttonStyle]=\"'secondary'\" (onClick)=\"openDeleteModal()\"/>\r\n      <app-button [label]=\"'Mégsem'\" [buttonStyle]=\"'secondary-ghost'\" (onClick)=\"navigateToUserList()\"/>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<app-modal [modalData]=\"userInfo\" [isOpen]=\"isModalOpen\"/>\r\n\r\n"
         },
         {
             "name": "TableComponent",
@@ -2319,7 +2400,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<app-table [data]=\"users\"\r\n           (mainButtonClicked)=\"addNewUser()\"\r\n           [headers]=\"headers\"\r\n           [actionButtons]=\"[faTrash, faPen]\"\r\n           (actionButtonClicked)=\"actionButtonHandler($event)\"\r\n/>\r\n<app-modal [modalData]=\"selectedUser\" [isOpen]=\"isModalOpen\" (onDelete)=\"loadTable()\"/>\r\n"
+            "templateData": "<div class=\"page-container\">\r\n  <app-table [data]=\"users\"\r\n             (mainButtonClicked)=\"addNewUser()\"\r\n             [headers]=\"headers\"\r\n             [actionButtons]=\"[faTrash, faPen]\"\r\n             (actionButtonClicked)=\"actionButtonHandler($event)\"\r\n  />\r\n  <app-modal [modalData]=\"selectedUser\" [isOpen]=\"isModalOpen\" (onDelete)=\"loadTable()\"/>\r\n</div>\r\n"
         }
     ],
     "modules": [],
@@ -2390,7 +2471,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {

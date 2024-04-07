@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  font-family: 'Open Sans', sans-serif;
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 40px;
+    background: #eef5fd;
+    display: flex;
+    flex-direction: row;
+    color: #607a9e;
+    padding-left: 25px;
+    min-height: 66px;
+    align-items: center;
+    justify-content: space-between;
+
+    .user-storybook{
+      font-weight: 700;
+      color: #3b4657;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .user {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 25px;
+        .username {
+          font-size: 12px;
+        }
+      }
+      .storybook{
+        height: 66px;
+        width: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #3b4657;
+        background: #7aa3dd4d;
+        font-size: 20px;
+        &:hover{
+          background: #7aa3dd99;
+          color: #fff;
+        }
+      }
+      }
+  }
+
+  .buttons-container{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    app-button + app-button {
+      margin-right: 16px;
+    }
+  }
+  .error-messages {
+    font-size: 10px;
+    color: red;
+    padding-top: 2px;
+    padding-left: 8px;
+    height: 20px;
+  }
+}

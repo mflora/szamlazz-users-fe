@@ -1,5 +1,5 @@
 export const jobOptions = [
-  {value: 'KERTESZ', displayName: 'Kertesz'},
-  {value: 'PEK', displayName: 'Pek'},
+  {value: 'KERTESZ', displayName: 'Kertész'},
+  {value: 'PEK', displayName: 'Pék'},
   {value: 'HENTES', displayName: 'Hentes'}
 ]

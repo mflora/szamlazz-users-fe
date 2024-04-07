@@ -1,7 +1,9 @@
-<app-table [data]="users"
-           (mainButtonClicked)="addNewUser()"
-           [headers]="headers"
-           [actionButtons]="[faTrash, faPen]"
-           (actionButtonClicked)="actionButtonHandler($event)"
-/>
-<app-modal [modalData]="selectedUser" [isOpen]="isModalOpen" (onDelete)="loadTable()"/>
+<div class="page-container">
+  <app-table [data]="users"
+             (mainButtonClicked)="addNewUser()"
+             [headers]="headers"
+             [actionButtons]="[faTrash, faPen]"
+             (actionButtonClicked)="actionButtonHandler($event)"
+  />
+  <app-modal [modalData]="selectedUser" [isOpen]="isModalOpen" (onDelete)="loadTable()"/>
+</div>

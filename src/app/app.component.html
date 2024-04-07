@@ -1,1 +1,11 @@
-<router-outlet />
+<div class="page">
+  <div class="navbar"></div>
+  <div class="title">
+    <span>{{ currentTitle }}</span>
+    <div class="user-storybook">
+      <div class="user"><fa-icon [icon]="faUser" size="xs"/> <span class="username">Flóra</span> </div>
+      <a href="https://6608253830769e14b4ca18e3-fcufhpusyq.chromatic.com/" class="storybook" target="_blank"><fa-icon [icon]="faBook"/> </a>
+    </div>
+  </div>
+  <router-outlet/>
+</div>

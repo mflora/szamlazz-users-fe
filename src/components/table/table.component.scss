@@ -16,7 +16,6 @@ tbody tr{
 
  table {
    border-spacing: 0 6px;
-   font-family: 'Open Sans', sans-serif;
    font-size: 16px;
    width: 100%;
  }
@@ -43,14 +42,13 @@ tbody tr{
  }
 
  .empty {
-   width: 100%;
+   width: 96%;
    background: #f2f4f6;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    font-size: 16px;
-   font-family: 'Open Sans', sans-serif;
    padding: 32px;
    .title {
      margin-top: 20px;
@@ -58,7 +56,6 @@ tbody tr{
  }
 
  .pager {
-   font-family: 'Open Sans', sans-serif;
    display: flex;
    flex-direction: row;
    justify-content: flex-end;
@@ -74,11 +71,11 @@ tbody tr{
 .action-button {
   ::ng-deep {
     .icon-button {
-      padding: 8px !important;
-      border: 1px solid lightgrey !important;
+      padding: 8px;
+      border: 1px solid lightgrey;
       height: 32px;
       width: 32px;
-      box-shadow: 0 2px 2px darkgrey !important;
+      box-shadow: 0 2px 2px darkgrey;
 
       .icon {
         margin: 0 !important;

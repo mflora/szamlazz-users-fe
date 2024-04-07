@@ -125,7 +125,8 @@
               "-d",
               "."
             ],
-            "outputDir": "storybook-static"
+            "outputDir": "storybook-static",
+            "styles": ["users-fe/src/styles.scss"]
           }
         }
       }

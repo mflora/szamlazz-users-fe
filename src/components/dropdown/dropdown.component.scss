@@ -31,7 +31,6 @@
 
 .dropdown-label {
   font-size: 12px;
-  font-family: 'Open Sans', sans-serif;
   color: #5b747b;
   padding-bottom: 2px;
 }
@@ -123,15 +122,6 @@ input{
 .invalid-input {
   border: 1px solid red;
   border-radius: 8px;
-}
-
-.error-messages {
-  font-size: 10px;
-  font-family: 'Open Sans', sans-serif;
-  color: red;
-  padding-top: 2px;
-  padding-left: 8px;
-  height: 20px;
 }
 
 .overlay {
